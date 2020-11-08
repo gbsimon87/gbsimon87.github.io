@@ -113,7 +113,7 @@ label {
 
 .game-area {
   display: flex;
-  height: 100vh;
+  height: calc(100vh - 2em);
   padding: 2em 0;
   flex-direction: column;
   justify-content: space-between;
