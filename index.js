@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var gamesDropdown = document.querySelector(".game-area-select-game .games");
   var currentGameSelected = gamesDropdown.value;
   var gameAreaContent = document.querySelector(".game-area-content");
+  let vh = window.innerHeight * 0.01;
   var form = document.querySelector(".game-area-controls-form");
   var speedInput = document.querySelector(".speed-range-input");
   var speedInputLabel = document.querySelector(".speed-range-label");
@@ -27,6 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
     "cyan",
     "pink",
   ];
+
+  document.documentElement.style.setProperty("--vh", `${vh}px`);
 
   function insertImage(fruitChosen) {
     gameAreaContent.innerHTML = `<img src="images/${currentGameSelected}/${fruitChosen}.png" alt="${fruitChosen}" />`;
@@ -170,5 +173,12 @@ document.addEventListener("DOMContentLoaded", function () {
     if (event.code === "Space") {
       controlGameplay();
     }
+  });
+
+  // We listen to the resize event
+  window.addEventListener("resize", () => {
+    // We execute the same script as before
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
   });
 });
