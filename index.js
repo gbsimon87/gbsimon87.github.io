@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var gamesDropdown = document.querySelector(".game-area-select-game .games");
   var currentGameSelected = gamesDropdown.value;
   var gameAreaContent = document.querySelector(".game-area-content");
+  var flashCardImage = document.querySelector(".flash-card-image");
   let vh = window.innerHeight * 0.01;
   var form = document.querySelector(".game-area-controls-form");
   var speedInput = document.querySelector(".speed-range-input");
@@ -32,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.documentElement.style.setProperty("--vh", `${vh}px`);
 
   function insertImage(fruitChosen) {
-    gameAreaContent.innerHTML = `<img src="images/${currentGameSelected}/${fruitChosen}.png" alt="${fruitChosen}" />`;
+    flashCardImage.innerHTML = `<img src="images/${currentGameSelected}/${fruitChosen}.png" alt="${fruitChosen}" />`;
   }
 
   function randomIntFromInterval(min, max) {
@@ -55,10 +56,10 @@ document.addEventListener("DOMContentLoaded", function () {
   function handleIsPlaying() {
     isPlaying = false;
     gamesDropdown.disabled = false;
+    flashCardImage.style.backgroundColor = "white";
+    flashCardImage.textContent = "Chooose a game below";
     speedInput.disabled = false;
     speedInputLabel.classList.remove("text-muted");
-    gameAreaContent.style.backgroundColor = "white";
-    gameAreaContent.textContent = currentGameSelected;
     playPauseButton.classList.add("btn-success");
     playPauseButton.classList.remove("btn-danger");
     playPauseButton.textContent = "PLAY";
@@ -84,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
           handleNotPlaying();
           numbersInterval = setInterval(function () {
             var randomNumber = randomIntFromInterval(0, 10);
-            gameAreaContent.textContent = randomNumber;
+            flashCardImage.textContent = randomNumber;
           }, calculateSpeedInMs());
         }
         break;
@@ -97,8 +98,8 @@ document.addEventListener("DOMContentLoaded", function () {
           coloursInterval = setInterval(function () {
             var randomNumber = randomIntFromInterval(0, 9);
             var randomColour = colours[randomNumber];
-            gameAreaContent.textContent = "";
-            gameAreaContent.style.backgroundColor = randomColour;
+            flashCardImage.textContent = "";
+            flashCardImage.style.backgroundColor = randomColour;
           }, calculateSpeedInMs());
         }
         break;
@@ -151,8 +152,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     currentGameSelected = gameSelected;
-    // gameTitle.textContent = `Learn your ${gameSelected}`;
-    gameAreaContent.textContent = `${gameSelected}`;
+    document.querySelector(".flash-card-image").textContent = `${gameSelected}`;
+    // gameAreaContent.textContent = `${gameSelected}`;
     playPauseButton.textContent = "PLAY";
     isPlaying = false;
   });
