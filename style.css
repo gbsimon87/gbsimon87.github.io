@@ -126,10 +126,10 @@ label {
   justify-content: space-between;
 }
 
-.game-area-title {
-  font-size: 2em;
-  text-align: center;
-  padding-top: 1em;
+.game-area > div:first-child {
+  display: flex;
+  flex: 7;
+  justify-content: center;
 }
 
 .game-area-select-game .games {
@@ -156,8 +156,7 @@ label {
   display: flex;
   flex-flow: column;
   justify-content: space-evenly;
-  min-height: 10em;
-  padding: 2em 0;
+  flex: 3;
 }
 
 .game-area-controls-form {

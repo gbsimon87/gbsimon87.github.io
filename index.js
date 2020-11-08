@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
   );
   var gamesDropdown = document.querySelector(".game-area-select-game .games");
   var currentGameSelected = gamesDropdown.value;
-  var gameAreaDisplayTitle = document.querySelector(".game-area-title");
   var gameAreaContent = document.querySelector(".game-area-content");
   var form = document.querySelector(".game-area-controls-form");
   var speedInput = document.querySelector(".speed-range-input");
@@ -56,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
     speedInput.disabled = false;
     speedInputLabel.classList.remove("text-muted");
     gameAreaContent.style.backgroundColor = "white";
-    gameAreaContent.textContent = "";
+    gameAreaContent.textContent = currentGameSelected;
     playPauseButton.classList.add("btn-success");
     playPauseButton.classList.remove("btn-danger");
     playPauseButton.textContent = "PLAY";
@@ -114,7 +113,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         break;
       case "shapes":
-        console.log("currentGameSelected: shapes");
         if (isPlaying) {
           handleIsPlaying();
           clearInterval(shapesInterval);
@@ -123,7 +121,6 @@ document.addEventListener("DOMContentLoaded", function () {
           shapesInterval = setInterval(function () {
             var randomNumber = randomIntFromInterval(0, shapes.length - 1);
             var shape = shapes[randomNumber];
-            console.log("shape:", shape);
             insertImage(shape);
           }, calculateSpeedInMs());
         }
@@ -138,8 +135,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   gamesDropdown.addEventListener("input", function (e) {
-    console.log("currentGameSelected:", currentGameSelected);
-    console.log("new value:", e.target.value);
     var gameSelected = e.target.value;
 
     if (currentGameSelected === "numbers") {
@@ -153,7 +148,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     currentGameSelected = gameSelected;
-    gameAreaDisplayTitle.textContent = `Learn your ${gameSelected}!`;
+    // gameTitle.textContent = `Learn your ${gameSelected}`;
+    gameAreaContent.textContent = `${gameSelected}`;
     playPauseButton.textContent = "PLAY";
     isPlaying = false;
   });
@@ -162,18 +158,16 @@ document.addEventListener("DOMContentLoaded", function () {
     controlGameplay();
   });
 
-  document.addEventListener("keyup", (event) => {
-    if (event.code === "Space") {
-      console.log("Space pressed");
+  speedInput.addEventListener("change", function (event) {
+    clearAllIntervals();
+
+    if (isPlaying) {
       controlGameplay();
     }
   });
 
-  speedInput.addEventListener("change", function (event) {
-    console.log(event.target.value);
-    clearAllIntervals();
-
-    if (isPlaying) {
+  document.addEventListener("keyup", (event) => {
+    if (event.code === "Space") {
       controlGameplay();
     }
   });
