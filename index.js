@@ -4,36 +4,111 @@ document.addEventListener("DOMContentLoaded", function () {
   var fruitsInterval;
   var shapesInterval;
   var coloursInterval;
+  var lastSelection = "";
   var playPauseButton = document.querySelector(
     ".game-area-controls-play-pause"
   );
   var gamesDropdown = document.querySelector(".game-area-select-game .games");
   var currentGameSelected = gamesDropdown.value;
-  var gameAreaContent = document.querySelector(".game-area-content");
+  var flashCard = document.querySelector(".game-area-content-flash-card");
   var flashCardImage = document.querySelector(".flash-card-image");
+  var flashCardDescription = document.querySelector(".flash-card-description");
   let vh = window.innerHeight * 0.01;
   var form = document.querySelector(".game-area-controls-form");
   var speedInput = document.querySelector(".speed-range-input");
   var speedInputLabel = document.querySelector(".speed-range-label");
-  var fruits = ["apple", "banana", "kiwi", "orange", "pear", "tomato"];
-  var shapes = ["circle", "rectangle", "triangle", "square", "star"];
+  var numbers = [
+    {
+      id: 0,
+      title: "zero",
+    },
+    {
+      id: 1,
+      title: "one",
+    },
+    {
+      id: 2,
+      title: "two",
+    },
+    {
+      id: 3,
+      title: "three",
+    },
+    {
+      id: 4,
+      title: "four",
+    },
+    {
+      id: 5,
+      title: "five",
+    },
+    {
+      id: 6,
+      title: "six",
+    },
+    {
+      id: 7,
+      title: "seven",
+    },
+    {
+      id: 8,
+      title: "eight",
+    },
+    {
+      id: 9,
+      title: "nine",
+    },
+  ];
   var colours = [
-    "red",
-    "green",
-    "blue",
-    "yellow",
-    "orange",
-    "purple",
-    "brown",
-    "lightblue",
-    "cyan",
-    "pink",
+    { hexValue: "", id: "red" },
+    { hexValue: "", id: "green" },
+    { hexValue: "", id: "blue" },
+    { hexValue: "", id: "yellow" },
+    { hexValue: "", id: "orange" },
+    { hexValue: "", id: "purple" },
+    { hexValue: "", id: "brown" },
+    { hexValue: "", id: "lightblue" },
+    { hexValue: "", id: "cyan" },
+    { hexValue: "", id: "pink" },
+  ];
+  var fruits = [
+    {
+      id: "apple",
+      title: "apple",
+    },
+    {
+      id: "banana",
+      title: "banana",
+    },
+    {
+      id: "kiwi",
+      title: "kiwi",
+    },
+    {
+      id: "orange",
+      title: "orange",
+    },
+    {
+      id: "pear",
+      title: "pear",
+    },
+    {
+      id: "tomato",
+      title: "tomato",
+    },
+  ];
+  var shapes = [
+    { id: "circle", title: "circle" },
+    { id: "rectangle", title: "rectangle" },
+    { id: "triangle", title: "triangle" },
+    { id: "square", title: "square" },
+    { id: "star", title: "star" },
   ];
 
   document.documentElement.style.setProperty("--vh", `${vh}px`);
 
-  function insertImage(fruitChosen) {
-    flashCardImage.innerHTML = `<img src="images/${currentGameSelected}/${fruitChosen}.png" alt="${fruitChosen}" />`;
+  function insertImage(randomImage) {
+    flashCardImage.innerHTML = `<img src="images/${currentGameSelected}/${randomImage.id}.png" alt="${randomImage.id}" />`;
   }
 
   function randomIntFromInterval(min, max) {
@@ -53,11 +128,14 @@ document.addEventListener("DOMContentLoaded", function () {
     clearInterval(shapesInterval);
   }
 
-  function handleIsPlaying() {
+  function handleStopPlaying() {
     isPlaying = false;
     gamesDropdown.disabled = false;
+    flashCard.style.borderColor = "#28a746";
+    flashCardDescription.style.borderColor = "#28a746";
     flashCardImage.style.backgroundColor = "white";
-    flashCardImage.textContent = "Chooose a game below";
+    flashCardImage.textContent = "";
+    flashCardDescription.textContent = "";
     speedInput.disabled = false;
     speedInputLabel.classList.remove("text-muted");
     playPauseButton.classList.add("btn-success");
@@ -65,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
     playPauseButton.textContent = "PLAY";
   }
 
-  function handleNotPlaying() {
+  function handleStartPlaying() {
     isPlaying = true;
     gamesDropdown.disabled = true;
     speedInput.disabled = true;
@@ -79,53 +157,65 @@ document.addEventListener("DOMContentLoaded", function () {
     switch (currentGameSelected) {
       case "numbers":
         if (isPlaying) {
-          handleIsPlaying();
+          handleStopPlaying();
           clearInterval(numbersInterval);
         } else {
-          handleNotPlaying();
+          handleStartPlaying();
           numbersInterval = setInterval(function () {
-            var randomNumber = randomIntFromInterval(0, 10);
-            flashCardImage.textContent = randomNumber;
+            var randomNumber = randomIntFromInterval(0, numbers.length - 1);
+            if (randomNumber === lastSelection) return;
+            flashCardImage.textContent = numbers[randomNumber].id;
+            flashCardDescription.textContent = numbers[randomNumber].title;
+            lastSelection = randomNumber;
           }, calculateSpeedInMs());
         }
         break;
       case "colours":
         if (isPlaying) {
-          handleIsPlaying();
+          handleStopPlaying();
           clearInterval(coloursInterval);
         } else {
-          handleNotPlaying();
+          handleStartPlaying();
           coloursInterval = setInterval(function () {
-            var randomNumber = randomIntFromInterval(0, 9);
+            var randomNumber = randomIntFromInterval(0, colours.length - 1);
+            if (randomNumber === lastSelection) return;
             var randomColour = colours[randomNumber];
+            flashCard.style.borderColor = randomColour.id;
             flashCardImage.textContent = "";
-            flashCardImage.style.backgroundColor = randomColour;
+            flashCardImage.style.backgroundColor = randomColour.id;
+            flashCardDescription.textContent = randomColour.id;
+            flashCardDescription.style.borderColor = randomColour.id;
+            lastSelection = randomNumber;
           }, calculateSpeedInMs());
         }
         break;
       case "fruits":
         if (isPlaying) {
-          handleIsPlaying();
+          handleStopPlaying();
           clearInterval(fruitsInterval);
         } else {
-          handleNotPlaying();
+          handleStartPlaying();
           fruitsInterval = setInterval(function () {
             var randomNumber = randomIntFromInterval(0, fruits.length - 1);
-            var fruit = fruits[randomNumber];
-            insertImage(fruit);
+            if (randomNumber === lastSelection) return;
+            var randomFruit = fruits[randomNumber];
+            insertImage(randomFruit);
+            flashCardDescription.textContent = randomFruit.title;
+            lastSelection = randomNumber;
           }, calculateSpeedInMs());
         }
         break;
       case "shapes":
         if (isPlaying) {
-          handleIsPlaying();
+          handleStopPlaying();
           clearInterval(shapesInterval);
         } else {
-          handleNotPlaying();
+          handleStartPlaying();
           shapesInterval = setInterval(function () {
             var randomNumber = randomIntFromInterval(0, shapes.length - 1);
             var shape = shapes[randomNumber];
             insertImage(shape);
+            flashCardDescription.textContent = shape.title;
           }, calculateSpeedInMs());
         }
         break;

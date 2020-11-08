@@ -198,8 +198,8 @@ form > div:last-child {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1em solid #28a746;
-  background: #28a746;
+  border: 0.2em solid #28a746;
+  overflow: hidden;
 }
 
 .flash-card-image {
@@ -209,8 +209,8 @@ form > div:last-child {
   display: flex;
   text-align: center;
   min-width: 100%;
-  font-size: 2rem;
-  border-radius: 0.5em 0.5em 0 0;
+  font-size: 5rem;
+  border-radius: 2em 0 0 0;
   background: white;
 }
 
@@ -220,8 +220,10 @@ form > div:last-child {
   flex: 1;
   align-items: center;
   justify-content: center;
-  color: white;
   border-radius: 0 0 0.5em 0.5em;
+  border-top: 1px solid #28a746;
+  background: white;
+  overflow: hidden;
 }
 
 @media (min-width: 768px) {
