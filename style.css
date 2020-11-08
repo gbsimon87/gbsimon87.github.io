@@ -6,6 +6,13 @@
   padding: 0;
 }
 
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
 /* TEXT */
 .text-dark {
   color: #343a40 !important;
@@ -113,8 +120,8 @@ label {
 
 .game-area {
   display: flex;
-  height: calc(100vh - 2em);
-  padding: 2em 0;
+  height: 100vh;
+  padding: 0;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -122,6 +129,7 @@ label {
 .game-area-title {
   font-size: 2em;
   text-align: center;
+  padding-top: 1em;
 }
 
 .game-area-select-game .games {
@@ -149,7 +157,7 @@ label {
   flex-flow: column;
   justify-content: space-evenly;
   min-height: 10em;
-  padding-top: 2em;
+  padding: 2em 0;
 }
 
 .game-area-controls-form {
