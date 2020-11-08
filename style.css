@@ -130,6 +130,7 @@ label {
   display: flex;
   flex: 7;
   justify-content: center;
+  padding: 2em 0;
 }
 
 .game-area-select-game .games {
@@ -189,6 +190,7 @@ form > div:last-child {
   justify-content: center;
   align-items: center;
   margin: 0;
+  width: 100%;
 }
 
 .game-area-content img {
