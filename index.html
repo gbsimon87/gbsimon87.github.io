@@ -13,44 +13,45 @@
         <div class="game-area">
           <div class="game-area-content text-dark">
             <div class="game-area-content-flash-card">
-              <div class="flash-card-image"></div>
+              <div class="flash-card-visual"></div>
               <div class="flash-card-description text-dark"></div>
             </div>
           </div>
-          <div class="game-area-controls">
-            <form class="game-area-controls-form">
-              <div class="game-area-select-game">
-                <select class="games" id="games" name="games">
-                  <option value="choose-game">Choose game</option>
-                  <option value="numbers">numbers</option>
-                  <option value="colours">colours</option>
-                  <option value="fruits">fruits</option>
-                  <option value="shapes">shapes</option>
-                </select>
-              </div>
-              <div>
-                <label class="speed-range-label" for="speed"
-                  >Speed (1 to 5 seconds):</label
-                >
-                <input
-                  type="range"
-                  class="speed-range-input"
-                  id="speed"
-                  name="speed"
-                  min="1"
-                  max="5"
-                  value="1"
-                />
-              </div>
-              <div>
-                <button
-                  type="submit"
-                  class="game-area-controls-play-pause btn btn-success"
-                >
-                  PLAY
-                </button>
-              </div>
-            </form>
+          <div class="game-area-controls container text-dark">
+            <div class="games">
+              <label class="games-label" for="games-select">Game</label>
+              <select
+                class="games-select"
+                id="games-select"
+                name="games-select"
+              >
+                <option value="">---</option>
+                <option value="numbers">numbers</option>
+                <option value="colours">colours</option>
+                <option value="fruits">fruits</option>
+                <option value="shapes">shapes</option>
+              </select>
+            </div>
+            <div class="speed" id="speed" name="speed">
+              <label class="speed-range-label" for="speed">Speed</label>
+              <input
+                type="range"
+                class="speed-range-input"
+                id="speed"
+                name="speed"
+                min="1"
+                max="5"
+                value="1"
+              />
+            </div>
+            <div>
+              <button
+                type="submit"
+                class="game-area-controls-play-pause btn btn-success"
+              >
+                PLAY
+              </button>
+            </div>
           </div>
         </div>
       </div>

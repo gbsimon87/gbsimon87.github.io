@@ -8,13 +8,12 @@ document.addEventListener("DOMContentLoaded", function () {
   var playPauseButton = document.querySelector(
     ".game-area-controls-play-pause"
   );
-  var gamesDropdown = document.querySelector(".game-area-select-game .games");
+  var gamesDropdown = document.querySelector(".games-select");
   var currentGameSelected = gamesDropdown.value;
   var flashCard = document.querySelector(".game-area-content-flash-card");
-  var flashCardImage = document.querySelector(".flash-card-image");
+  var flashCardImage = document.querySelector(".flash-card-visual");
   var flashCardDescription = document.querySelector(".flash-card-description");
   let vh = window.innerHeight * 0.01;
-  var form = document.querySelector(".game-area-controls-form");
   var speedInput = document.querySelector(".speed-range-input");
   var speedInputLabel = document.querySelector(".speed-range-label");
   var numbers = [
@@ -224,10 +223,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
-  });
-
   gamesDropdown.addEventListener("input", function (e) {
     var gameSelected = e.target.value;
 
@@ -242,7 +237,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     currentGameSelected = gameSelected;
-    document.querySelector(".flash-card-image").textContent = `${gameSelected}`;
+    // document.querySelector(".flash-card-visual").textContent = `${gameSelected}`;
     // gameAreaContent.textContent = `${gameSelected}`;
     playPauseButton.textContent = "PLAY";
     isPlaying = false;

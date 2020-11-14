@@ -1,15 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap");
 *,
 ::after,
 ::before {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: "EB Garamond", serif;
 }
 
 html,
 body {
   margin: 0;
   height: 100%;
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 /* TEXT */
@@ -104,14 +114,6 @@ textarea {
   border-color: #f8f9fa;
 }
 
-.container {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
 label {
   display: inline-block;
   margin-bottom: 0.5rem;
@@ -126,23 +128,30 @@ label {
   justify-content: space-between;
 }
 
-.game-area-select-game .games {
-  display: block;
+.games {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.game-area-controls > div > label {
+  display: flex;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 1.5rem;
+  flex: 1;
+}
+
+.game-area-controls select {
   min-width: 10em;
   padding: 0.375rem 0.75rem;
-  font-size: 1rem;
   line-height: 1.5;
+  font-size: 1.2rem;
   color: #495057;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-.game-area-select-game .games:focus {
-  color: #495057;
-  border-color: #80bdff;
-  outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  flex: 2;
 }
 
 .game-area-controls {
@@ -151,24 +160,23 @@ label {
   flex-flow: column;
   justify-content: space-evenly;
   flex: 1;
+  text-align: center;
 }
 
-.game-area-controls-form {
+.game-area-controls select:focus {
+  color: #495057;
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.game-area-controls .speed {
   display: flex;
-  flex-flow: column;
-  align-items: center;
+  justify-content: space-evenly;
 }
 
-form > div {
-  margin-bottom: 2em;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-}
-
-form > div:last-child {
-  margin: 0;
-  display: block;
+.game-area-controls .speed-range-input {
+  flex: 2;
 }
 
 .game-area-controls-play-pause {
@@ -202,14 +210,14 @@ form > div:last-child {
   overflow: hidden;
 }
 
-.flash-card-image {
+.flash-card-visual {
   flex: 3;
   justify-content: center;
   align-items: center;
   display: flex;
   text-align: center;
   min-width: 100%;
-  font-size: 5rem;
+  font-size: 6rem;
   border-radius: 2em 0 0 0;
   background: white;
 }
@@ -224,9 +232,10 @@ form > div:last-child {
   border-top: 1px solid #28a746;
   background: white;
   overflow: hidden;
+  font-size: 3rem;
 }
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .container {
     max-width: 720px;
   }
@@ -235,4 +244,4 @@ form > div:last-child {
   .container {
     max-width: 540px;
   }
-}
+} */
