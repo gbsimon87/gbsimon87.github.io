@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function calculateSpeedInMs() {
     if (!speedInput) return 1000;
-    return document.querySelector(".speed-range-input").value * 1000;
+    return speedInput.value * 1000;
   }
 
   function clearAllIntervals() {
@@ -152,6 +152,42 @@ document.addEventListener("DOMContentLoaded", function () {
     playPauseButton.textContent = "STOP";
   }
 
+  function handleGameNumbers() {
+    var randomNumber = randomIntFromInterval(0, numbers.length - 1);
+    if (randomNumber === lastSelection) return;
+    flashCardImage.textContent = numbers[randomNumber].id;
+    flashCardDescription.textContent = numbers[randomNumber].title;
+    lastSelection = randomNumber;
+  }
+
+  function handleColoursGame() {
+    var randomNumber = randomIntFromInterval(0, colours.length - 1);
+    if (randomNumber === lastSelection) return;
+    var randomColour = colours[randomNumber];
+    flashCard.style.borderColor = randomColour.id;
+    flashCardImage.textContent = "";
+    flashCardImage.style.backgroundColor = randomColour.id;
+    flashCardDescription.textContent = randomColour.id;
+    flashCardDescription.style.borderColor = randomColour.id;
+    lastSelection = randomNumber;
+  }
+
+  function handleFruitsGame() {
+    var randomNumber = randomIntFromInterval(0, fruits.length - 1);
+    if (randomNumber === lastSelection) return;
+    var randomFruit = fruits[randomNumber];
+    insertImage(randomFruit);
+    flashCardDescription.textContent = randomFruit.title;
+    lastSelection = randomNumber;
+  }
+
+  function handleShapesGame() {
+    var randomNumber = randomIntFromInterval(0, shapes.length - 1);
+    var shape = shapes[randomNumber];
+    insertImage(shape);
+    flashCardDescription.textContent = shape.title;
+  }
+
   function controlGameplay() {
     switch (currentGameSelected) {
       case "numbers":
@@ -160,12 +196,9 @@ document.addEventListener("DOMContentLoaded", function () {
           clearInterval(numbersInterval);
         } else {
           handleStartPlaying();
+          handleGameNumbers();
           numbersInterval = setInterval(function () {
-            var randomNumber = randomIntFromInterval(0, numbers.length - 1);
-            if (randomNumber === lastSelection) return;
-            flashCardImage.textContent = numbers[randomNumber].id;
-            flashCardDescription.textContent = numbers[randomNumber].title;
-            lastSelection = randomNumber;
+            handleGameNumbers();
           }, calculateSpeedInMs());
         }
         break;
@@ -175,16 +208,9 @@ document.addEventListener("DOMContentLoaded", function () {
           clearInterval(coloursInterval);
         } else {
           handleStartPlaying();
+          handleColoursGame();
           coloursInterval = setInterval(function () {
-            var randomNumber = randomIntFromInterval(0, colours.length - 1);
-            if (randomNumber === lastSelection) return;
-            var randomColour = colours[randomNumber];
-            flashCard.style.borderColor = randomColour.id;
-            flashCardImage.textContent = "";
-            flashCardImage.style.backgroundColor = randomColour.id;
-            flashCardDescription.textContent = randomColour.id;
-            flashCardDescription.style.borderColor = randomColour.id;
-            lastSelection = randomNumber;
+            handleColoursGame();
           }, calculateSpeedInMs());
         }
         break;
@@ -194,13 +220,9 @@ document.addEventListener("DOMContentLoaded", function () {
           clearInterval(fruitsInterval);
         } else {
           handleStartPlaying();
+          handleFruitsGame();
           fruitsInterval = setInterval(function () {
-            var randomNumber = randomIntFromInterval(0, fruits.length - 1);
-            if (randomNumber === lastSelection) return;
-            var randomFruit = fruits[randomNumber];
-            insertImage(randomFruit);
-            flashCardDescription.textContent = randomFruit.title;
-            lastSelection = randomNumber;
+            handleFruitsGame();
           }, calculateSpeedInMs());
         }
         break;
@@ -210,11 +232,9 @@ document.addEventListener("DOMContentLoaded", function () {
           clearInterval(shapesInterval);
         } else {
           handleStartPlaying();
+          handleShapesGame();
           shapesInterval = setInterval(function () {
-            var randomNumber = randomIntFromInterval(0, shapes.length - 1);
-            var shape = shapes[randomNumber];
-            insertImage(shape);
-            flashCardDescription.textContent = shape.title;
+            handleShapesGame();
           }, calculateSpeedInMs());
         }
         break;

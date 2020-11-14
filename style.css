@@ -116,7 +116,6 @@ textarea {
 
 label {
   display: inline-block;
-  margin-bottom: 0.5rem;
 }
 
 .game-area {
@@ -199,15 +198,15 @@ label {
 }
 
 .game-area-content-flash-card {
-  width: 80%;
-  height: 80%;
+  width: 90%;
+  height: 90%;
   border-radius: 0.5em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 0.2em solid #28a746;
   overflow: hidden;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
 
 .flash-card-visual {
@@ -229,7 +228,7 @@ label {
   align-items: center;
   justify-content: center;
   border-radius: 0 0 0.5em 0.5em;
-  border-top: 1px solid #28a746;
+  /* border-top: 1px solid #28a746; */
   background: white;
   overflow: hidden;
   font-size: 3rem;
