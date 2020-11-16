@@ -17,10 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
   let vh = window.innerHeight * 0.01;
   var speedInput = document.querySelector(".speed-range-input");
   var speedInputLabel = document.querySelector(".speed-range-label");
-  var user1 = "user1";
-  var user2 = "user2";
-  var category;
-  var delay;
   var numbers = [
     {
       id: 0,
@@ -160,20 +156,6 @@ document.addEventListener("DOMContentLoaded", function () {
     playPauseButton.textContent = "STOP";
   }
 
-  function removeFadeOut(el, speed) {
-    console.log("speed:", speed);
-    console.log("el:", el);
-
-    if (!el) return null;
-    var seconds = speed / 1000;
-    el.style.transition = "opacity " + seconds + "s ease";
-
-    el.style.opacity = 0;
-    setTimeout(function () {
-      el.parentNode.removeChild(el);
-    }, speed);
-  }
-
   function handleGameNumbers() {
     var randomNumber = randomIntFromInterval(0, numbers.length - 1);
     if (randomNumber === lastSelection) return;
@@ -294,22 +276,40 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  gamesDropdown.addEventListener("input", function (e) {
-    var gameSelected = e.target.value;
+  function enablePlayButton() {
+    playPauseButton.classList.remove("btn-disabled");
+    playPauseButton.classList.add("btn-success");
+    playPauseButton.disabled = false;
+  }
 
-    if (currentGameSelected === "numbers") {
+  function disablePlayButton() {
+    console.log(playPauseButton);
+    playPauseButton.classList.add("btn-disabled");
+    playPauseButton.classList.remove("btn-success");
+    playPauseButton.disabled = true;
+  }
+
+  gamesDropdown.addEventListener("input", function (e) {
+    var userSelection = e.target.value;
+
+    if (userSelection === "numbers") {
+      enablePlayButton();
       clearInterval(numbersInterval);
-    } else if (currentGameSelected === "fruits") {
+    } else if (userSelection === "fruits") {
+      enablePlayButton();
       clearInterval(fruitsInterval);
-    } else if (currentGameSelected === "shapes") {
+    } else if (userSelection === "shapes") {
+      enablePlayButton();
       clearInterval(shapesInterval);
-    } else if (currentGameSelected === "colours") {
+    } else if (userSelection === "colours") {
+      enablePlayButton();
       clearInterval(coloursInterval);
+    } else {
+      clearAllIntervals();
+      disablePlayButton();
     }
 
-    currentGameSelected = gameSelected;
-    // document.querySelector(".flash-card-visual").textContent = `${gameSelected}`;
-    // gameAreaContent.textContent = `${gameSelected}`;
+    currentGameSelected = userSelection;
     playPauseButton.textContent = "PLAY";
     isPlaying = false;
   });
@@ -330,6 +330,20 @@ document.addEventListener("DOMContentLoaded", function () {
     if (event.code === "Space") {
       controlGameplay();
     }
+  });
+
+  // Attach listener settings icon / open modal
+  document
+    .querySelector(".settings-icon")
+    .addEventListener("click", function () {
+      console.log("clicked, open modal");
+      document.querySelector(".modal").style.display = "flex";
+    });
+
+  // Close modal
+  document.querySelector(".modal-close").addEventListener("click", function () {
+    console.log("clicked, close modal");
+    document.querySelector(".modal").style.display = "none";
   });
 
   // We listen to the resize event

@@ -17,40 +17,54 @@
               <div class="flash-card-description text-dark"></div>
             </div>
           </div>
-          <div class="game-area-controls container text-dark">
-            <div class="games">
-              <label class="games-label" for="games-select">Category</label>
-              <select
-                class="games-select"
-                id="games-select"
-                name="games-select"
-              >
-                <option value="">---</option>
-                <option value="numbers">numbers</option>
-                <option value="colours">colours</option>
-                <option value="fruits">fruits</option>
-                <option value="shapes">shapes</option>
-              </select>
-            </div>
-            <div class="speed" id="speed" name="speed">
-              <label class="speed-range-label" for="speed">Delay</label>
-              <input
-                type="range"
-                class="speed-range-input"
-                id="speed"
-                name="speed"
-                min="1"
-                max="5"
-                value="1"
+          <div class="game-area-controls text-dark">
+            <div class="user-controls">
+              <img
+                class="settings-icon"
+                src="./images/icons/settings_icon_3.jpg"
               />
-            </div>
-            <div>
               <button
+                disabled
                 type="submit"
-                class="game-area-controls-play-pause btn btn-success"
+                class="game-area-controls-play-pause btn btn-disabled"
               >
                 PLAY
               </button>
+            </div>
+          </div>
+          <div class="modal container">
+            <span class="modal-close">X</span>
+            <div class="settings">
+              <div class="settings-title">
+                <p>Settings</p>
+              </div>
+              <div class="settings-games">
+                <label class="games-label" for="games-select">Category</label>
+                <select
+                  class="games-select"
+                  id="games-select"
+                  name="games-select"
+                  value=""
+                >
+                  <option value="">---</option>
+                  <option value="numbers">numbers</option>
+                  <option value="colours">colours</option>
+                  <option value="fruits">fruits</option>
+                  <option value="shapes">shapes</option>
+                </select>
+              </div>
+              <div class="settings-speed" id="speed" name="speed">
+                <label class="speed-range-label" for="speed">Delay</label>
+                <input
+                  type="range"
+                  class="speed-range-input"
+                  id="speed"
+                  name="speed"
+                  min="1"
+                  max="5"
+                  value="1"
+                />
+              </div>
             </div>
           </div>
         </div>
