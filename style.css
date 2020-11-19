@@ -137,7 +137,6 @@ label {
 
 .modal {
   display: none;
-  border: 0.5rem solid #232323;
   background: white;
   height: 100%;
   position: absolute;
