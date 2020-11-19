@@ -198,9 +198,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function handleGameShapes() {
     var randomNumber = randomIntFromInterval(0, shapes.length - 1);
+    if (randomNumber === lastSelection) return;
     var shape = shapes[randomNumber];
     insertImage(shape);
     flashCardDescription.textContent = shape.title;
+    lastSelection = randomNumber;
   }
 
   function controlGameplay() {
