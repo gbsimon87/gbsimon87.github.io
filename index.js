@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ".game-area-controls-play-pause"
   );
   var gamesDropdown = document.querySelector(".games-select");
+  var gamesDropdownLabel = document.querySelector(".games-label");
   var currentGameSelected = gamesDropdown.value;
   var flashCard = document.querySelector(".game-area-content-flash-card");
   var flashCardImage = document.querySelector(".flash-card-visual");
@@ -138,8 +139,9 @@ document.addEventListener("DOMContentLoaded", function () {
     flashCardImage.textContent = "";
     flashCardDescription.textContent = "";
     speedInput.disabled = false;
-    speedInputLabel.classList.remove("text-muted");
+    gamesDropdownLabel.classList.remove("text-muted");
     playPauseButton.classList.add("btn-success");
+    speedInputLabel.classList.remove("text-muted");
     playPauseButton.classList.remove("btn-danger");
     playPauseButton.textContent = "PLAY";
   }
@@ -150,6 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
     isPlaying = true;
     gamesDropdown.disabled = true;
     speedInput.disabled = true;
+    gamesDropdownLabel.classList.add("text-muted");
     speedInputLabel.classList.add("text-muted");
     playPauseButton.classList.remove("btn-success");
     playPauseButton.classList.add("btn-danger");
