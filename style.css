@@ -194,7 +194,8 @@ label {
 }
 
 .game-area-content img {
-  max-height: 5em;
+  max-width: 2em;
+  max-height: 2em;
 }
 
 .game-area-content-flash-card {
@@ -218,6 +219,8 @@ label {
   min-width: 100%;
   font-size: 6rem;
   background: white;
+  background-color: white;
+  border-bottom: 1px solid #ccc;
 }
 
 .flash-card-visual.categoryTitle {
