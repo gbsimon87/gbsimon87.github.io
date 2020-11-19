@@ -135,7 +135,7 @@ label {
 
 .game-area-controls > div > label {
   display: flex;
-  font-style: italic;
+  font-style: normal;
   font-weight: bold;
   font-size: 1.5rem;
   flex: 1;
@@ -206,7 +206,7 @@ label {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .flash-card-visual {
@@ -217,8 +217,11 @@ label {
   text-align: center;
   min-width: 100%;
   font-size: 6rem;
-  border-radius: 2em 0 0 0;
   background: white;
+}
+
+.flash-card-visual.categoryTitle {
+  font-size: 3rem;
 }
 
 .flash-card-description {
