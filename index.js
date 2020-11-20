@@ -9,10 +9,9 @@ document.addEventListener("DOMContentLoaded", function () {
     ".game-area-controls-play-pause"
   );
   var gamesDropdown = document.querySelector(".games-select");
-  var gamesDropdownLabel = document.querySelector(".games-label");
   var currentGameSelected = gamesDropdown.value;
   var flashCard = document.querySelector(".game-area-content-flash-card");
-  var flashCardImage = document.querySelector(".flash-card-visual");
+  var flashCardVisual = document.querySelector(".flash-card-visual");
   var flashCardDescription = document.querySelector(".flash-card-description");
   let vh = window.innerHeight * 0.01;
   var speedInput = document.querySelector(".speed-range-input");
@@ -111,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function insertImage(randomImage) {
-    flashCardImage.innerHTML = `<img src="images/${currentGameSelected}/${randomImage.id}.png" alt="${randomImage.id}" />`;
+    flashCardVisual.innerHTML = `<img src="images/${currentGameSelected}/${randomImage.id}.png" alt="${randomImage.id}" />`;
   }
 
   function randomIntFromInterval(min, max) {
@@ -135,11 +134,11 @@ document.addEventListener("DOMContentLoaded", function () {
   function handleStopPlaying() {
     isPlaying = false;
     gamesDropdown.disabled = false;
-    flashCardImage.style.backgroundColor = "white";
-    flashCardImage.textContent = "";
-    flashCardDescription.textContent = "";
+
+    // flashCardVisual.style.backgroundColor = "white";
+    // flashCardVisual.textContent = "";
+    // flashCardDescription.textContent = "";
     speedInput.disabled = false;
-    gamesDropdownLabel.classList.remove("text-muted");
     playPauseButton.classList.add("btn-success");
     speedInputLabel.classList.remove("text-muted");
     playPauseButton.classList.remove("btn-danger");
@@ -148,11 +147,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function handleStartPlaying() {
     document.querySelector(".flash-card-visual").style.backgroundColor = "#FFF";
-    flashCardImage.classList.remove("categoryTitle");
+    flashCardVisual.classList.remove("categoryTitle");
     isPlaying = true;
     gamesDropdown.disabled = true;
     speedInput.disabled = true;
-    gamesDropdownLabel.classList.add("text-muted");
     speedInputLabel.classList.add("text-muted");
     playPauseButton.classList.remove("btn-success");
     playPauseButton.classList.add("btn-danger");
@@ -165,11 +163,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (isPlaying) {
       console.log("is playing");
-      const newFlashCardImage = document.querySelector(".flash-card-visual");
+      const newFlashCardVisual = document.querySelector(".flash-card-visual");
       const newFlashCardDescription = document.querySelector(
         ".flash-card-description"
       );
-      newFlashCardImage.textContent = numbers[randomNumber].id;
+      newFlashCardVisual.textContent = numbers[randomNumber].id;
       newFlashCardDescription.textContent = numbers[randomNumber].title;
       lastSelection = randomNumber;
     }
@@ -180,8 +178,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (randomNumber === lastSelection) return;
     var randomColour = colours[randomNumber];
     flashCard.style.borderColor = randomColour.id;
-    flashCardImage.textContent = "";
-    flashCardImage.style.backgroundColor = randomColour.id;
+    flashCardVisual.textContent = "";
+    flashCardVisual.style.backgroundColor = randomColour.id;
     flashCardDescription.textContent = randomColour.id;
     flashCardDescription.style.borderColor = randomColour.id;
     lastSelection = randomNumber;
@@ -260,25 +258,71 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  gamesDropdown.addEventListener("input", function (e) {
-    var gameSelected = e.target.value;
+  function enablePlayButton() {
+    playPauseButton.classList.remove("btn-disabled");
+    playPauseButton.classList.add("btn-success");
+    playPauseButton.disabled = false;
+  }
 
-    if (currentGameSelected === "numbers") {
+  function disablePlayButton() {
+    console.log(playPauseButton);
+    playPauseButton.classList.add("btn-disabled");
+    playPauseButton.classList.remove("btn-success");
+    playPauseButton.disabled = true;
+  }
+
+  function getElementComputedStyle(element) {
+    return window.getComputedStyle(element).display;
+  }
+
+  function handleHideModal(event) {
+    var target = event.target;
+    var modal = document.querySelector(".modal");
+    var modalIsHidden = getElementComputedStyle(modal) === "none";
+
+    if (modalIsHidden) {
+      console.log("modal is hidden, do nothing");
+    } else {
+      console.log("modal is VISIBLE");
+      var isClickInside = modal.contains(target);
+      if (isClickInside) {
+        console.log("clicked inside modal");
+      } else {
+        console.log("clicked OUTSIDE modal");
+        modal.style.display = "none";
+      }
+    }
+  }
+
+  gamesDropdown.addEventListener("input", function (e) {
+    var userSelection = e.target.value;
+
+    flashCardVisual.style.backgroundColor = "white";
+
+    if (userSelection === "numbers") {
+      enablePlayButton();
       clearInterval(numbersInterval);
-    } else if (currentGameSelected === "fruits") {
+    } else if (userSelection === "fruits") {
+      enablePlayButton();
       clearInterval(fruitsInterval);
-    } else if (currentGameSelected === "shapes") {
+    } else if (userSelection === "shapes") {
+      enablePlayButton();
       clearInterval(shapesInterval);
-    } else if (currentGameSelected === "colours") {
+    } else if (userSelection === "colours") {
+      enablePlayButton();
       clearInterval(coloursInterval);
+    } else {
+      clearAllIntervals();
+      disablePlayButton();
     }
 
-    currentGameSelected = gameSelected;
+    currentGameSelected = userSelection;
     document.querySelector(
       ".flash-card-visual"
-    ).textContent = `${gameSelected}`;
+    ).textContent = `${userSelection}`;
     document.querySelector(".flash-card-description").textContent = "";
-    flashCardImage.classList.add("categoryTitle");
+    flashCardVisual.classList.add("categoryTitle");
+    currentGameSelected = userSelection;
     playPauseButton.textContent = "PLAY";
     isPlaying = false;
   });
@@ -301,12 +345,31 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // Attach listener settings icon / open modal
+  document
+    .querySelector(".settings-icon")
+    .addEventListener("click", function () {
+      console.log("clicked, settings icon");
+      if (isPlaying) return;
+
+      var modal = document.querySelector(".modal");
+      modal.style.display = "flex";
+    });
+
+  // Close modal
+  document.querySelector(".modal-close").addEventListener("click", function () {
+    console.log("clicked, close modal");
+    document.querySelector(".modal").style.display = "none";
+  });
+
   // We listen to the resize event
   window.addEventListener("resize", () => {
     // We execute the same script as before
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty("--vh", `${vh}px`);
   });
+
+  document.body.addEventListener("click", handleHideModal, true);
 
   function init() {
     setDocumentHeight();

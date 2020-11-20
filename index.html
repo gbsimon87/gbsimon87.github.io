@@ -17,13 +17,14 @@
               <div class="flash-card-description text-dark"></div>
             </div>
           </div>
-          <div class="game-area-controls container text-dark">
-            <div class="games">
-              <label class="games-label" for="games-select">Category</label>
+          <div class="game-area-controls text-dark container">
+            <div class="game-area-controls-category">
+              <!-- <label class="games-label" for="games-select">Category</label> -->
               <select
-                class="games-select"
+                class="games-select form-control"
                 id="games-select"
                 name="games-select"
+                value=""
               >
                 <option value="numbers">numbers</option>
                 <option value="colours">colours</option>
@@ -31,25 +32,39 @@
                 <option value="shapes">shapes</option>
               </select>
             </div>
-            <div class="speed" id="speed" name="speed">
-              <label class="speed-range-label" for="speed">Delay</label>
-              <input
-                type="range"
-                class="speed-range-input"
-                id="speed"
-                name="speed"
-                min="1"
-                max="5"
-                value="2"
+            <div class="game-area-controls-extra-settings">
+              <img
+                class="settings-icon"
+                src="./images/icons/settings_icon_3.jpg"
               />
-            </div>
-            <div>
               <button
                 type="submit"
-                class="game-area-controls-play-pause btn btn-success"
+                class="btn-success game-area-controls-play-pause btn"
               >
                 PLAY
               </button>
+            </div>
+          </div>
+          <div class="modal container text-dark">
+            <span class="modal-close text-dark">X</span>
+            <div class="settings text-dark">
+              <div class="settings-title">
+                <p>Settings</p>
+              </div>
+              <div class="settings-speed" id="speed" name="speed">
+                <label class="speed-range-label text-dark" for="speed"
+                  >Delay</label
+                >
+                <input
+                  type="range"
+                  class="speed-range-input"
+                  id="speed"
+                  name="speed"
+                  min="1"
+                  max="5"
+                  value="1"
+                />
+              </div>
             </div>
           </div>
         </div>

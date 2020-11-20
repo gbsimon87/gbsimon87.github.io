@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap");
+
 *,
 ::after,
 ::before {
@@ -114,6 +115,13 @@ textarea {
   border-color: #f8f9fa;
 }
 
+/* todo: Change disabled colours */
+.btn-disabled {
+  background-color: #6c6c6c;
+  border: 1px solid #6c6c6c;
+  color: white;
+}
+
 label {
   display: inline-block;
 }
@@ -127,13 +135,41 @@ label {
   justify-content: space-between;
 }
 
-.games {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+.modal {
+  min-height: 20rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  flex-flow: column;
+  justify-content: center;
+  border: 1px solid #50565d;
+  background: white;
+  width: 75%;
+  border-radius: 0.5rem;
+  padding: 4rem 2rem 3rem 2rem;
 }
 
-.game-area-controls > div > label {
+.modal-close {
+  position: absolute;
+  cursor: pointer;
+  top: 0.5rem;
+  right: 1rem;
+  font-size: 2em;
+  border: 1px solid #343a40;
+  padding: 0.5rem;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  line-height: 30px;
+}
+
+.modal label {
   display: flex;
   font-style: normal;
   font-weight: bold;
@@ -141,7 +177,7 @@ label {
   flex: 1;
 }
 
-.game-area-controls select {
+.modal select {
   min-width: 10em;
   padding: 0.375rem 0.75rem;
   line-height: 1.5;
@@ -153,6 +189,43 @@ label {
   flex: 2;
 }
 
+.modal .settings {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+}
+
+.modal .settings > div {
+  margin-bottom: 2rem;
+}
+
+.modal .settings > div:last-child {
+  margin-bottom: 0;
+}
+
+.settings .settings-title {
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.game-area-controls-category {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.game-area-controls-extra-settings {
+  display: flex;
+  justify-content: space-around;
+}
+
+.settings-speed {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 .game-area-controls {
   border-top: 1px solid #e5e5e5;
   display: flex;
@@ -162,6 +235,24 @@ label {
   text-align: center;
 }
 
+select.form-control:not([size]):not([multiple]) {
+  height: calc(2.25rem + 2px);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
 .game-area-controls select:focus {
   color: #495057;
   border-color: #80bdff;
@@ -169,12 +260,18 @@ label {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-.game-area-controls .speed {
+.game-area-controls {
   display: flex;
   justify-content: space-evenly;
 }
 
-.game-area-controls .speed-range-input {
+.settings-icon {
+  width: 3em;
+  height: 3em;
+  cursor: pointer;
+}
+
+.modal .speed-range-input {
   flex: 2;
 }
 
@@ -190,7 +287,7 @@ label {
   margin: 0;
   width: 100%;
   font-size: 1.5em;
-  flex: 2;
+  flex: 4;
 }
 
 .game-area-content img {
@@ -201,7 +298,7 @@ label {
 .game-area-content-flash-card {
   width: 90%;
   height: 90%;
-  border-radius: 0.5em;
+  border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -234,19 +331,7 @@ label {
   align-items: center;
   justify-content: center;
   border-radius: 0 0 0.5em 0.5em;
-  /* border-top: 1px solid #28a746; */
   background: white;
   overflow: hidden;
   font-size: 3rem;
 }
-
-/* @media (min-width: 768px) {
-  .container {
-    max-width: 720px;
-  }
-}
-@media (min-width: 576px) {
-  .container {
-    max-width: 540px;
-  }
-} */
