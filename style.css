@@ -148,11 +148,11 @@ label {
   text-align: center;
   flex-flow: column;
   justify-content: center;
-  border: 1px solid #50565d;
   background: white;
   width: 75%;
   border-radius: 0.5rem;
   padding: 4rem 2rem 3rem 2rem;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .modal-close {
@@ -161,12 +161,6 @@ label {
   top: 0.5rem;
   right: 1rem;
   font-size: 2em;
-  border: 1px solid #343a40;
-  padding: 0.5rem;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  line-height: 30px;
 }
 
 .modal label {
