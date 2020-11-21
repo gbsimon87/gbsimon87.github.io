@@ -21,44 +21,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const speedInputLabel = document.querySelector(".speed-range-label");
   let currentGameSelected = gamesDropdown.value;
   let games = {
-    colours: [
-      { hexValue: "", id: "red" },
-      { hexValue: "", id: "green" },
-      { hexValue: "", id: "blue" },
-      { hexValue: "", id: "yellow" },
-      { hexValue: "", id: "orange" },
-      { hexValue: "", id: "purple" },
-      { hexValue: "", id: "brown" },
-      { hexValue: "", id: "lightblue" },
-      { hexValue: "", id: "cyan" },
-      { hexValue: "", id: "pink" },
-    ],
-    fruits: [
-      {
-        id: "apple",
-        title: "apple",
-      },
-      {
-        id: "banana",
-        title: "banana",
-      },
-      {
-        id: "kiwi",
-        title: "kiwi",
-      },
-      {
-        id: "orange",
-        title: "orange",
-      },
-      {
-        id: "pear",
-        title: "pear",
-      },
-      {
-        id: "tomato",
-        title: "tomato",
-      },
-    ],
     numbers: [
       {
         id: 0,
@@ -99,6 +61,44 @@ document.addEventListener("DOMContentLoaded", function () {
       {
         id: 9,
         title: "nine",
+      },
+    ],
+    colours: [
+      { hexValue: "", id: "red" },
+      { hexValue: "", id: "green" },
+      { hexValue: "", id: "blue" },
+      { hexValue: "", id: "yellow" },
+      { hexValue: "", id: "orange" },
+      { hexValue: "", id: "purple" },
+      { hexValue: "", id: "brown" },
+      { hexValue: "", id: "lightblue" },
+      { hexValue: "", id: "cyan" },
+      { hexValue: "", id: "pink" },
+    ],
+    fruits: [
+      {
+        id: "apple",
+        title: "apple",
+      },
+      {
+        id: "banana",
+        title: "banana",
+      },
+      {
+        id: "kiwi",
+        title: "kiwi",
+      },
+      {
+        id: "orange",
+        title: "orange",
+      },
+      {
+        id: "pear",
+        title: "pear",
+      },
+      {
+        id: "tomato",
+        title: "tomato",
       },
     ],
     shapes: [
@@ -271,6 +271,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function buildSelectionBoard() {
     const currentGames = Object.keys(games);
+    console.log("currentGames:", currentGames);
 
     currentGames.forEach(function (currentGame) {
       console.log(currentGame);
@@ -280,9 +281,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document
       .querySelectorAll('[class*="selection-board-game"]')
-      .forEach(function (game) {
+      .forEach(function (game, index) {
+        console.log("game:", game);
+        // game.style.backgroundColor = getRandomColor();
+        // url("/images/fruits/apple.png")
         game.style.backgroundImage =
-          "url(/images/categoryBGImages/" + game.innerText + ".png)";
+          "url(/images/categoryBGImages/" + game + ".png)";
+
+        console.log(game.style.backgroundColor);
+        // document.body.style.backgroundColor = "black"; //changing bg color
 
         game.addEventListener("click", function (event) {
           console.log(event.target.innerText);
