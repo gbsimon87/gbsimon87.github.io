@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var flashCard = document.querySelector(".game-area-content-flash-card");
   var flashCardVisual = document.querySelector(".flash-card-visual");
   var flashCardDescription = document.querySelector(".flash-card-description");
+  var modal = document.querySelector(".modal");
   let vh = window.innerHeight * 0.01;
   var speedInput = document.querySelector(".speed-range-input");
   var speedInputLabel = document.querySelector(".speed-range-label");
@@ -289,7 +290,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("clicked inside modal");
       } else {
         console.log("clicked OUTSIDE modal");
-        modal.style.display = "none";
+        modal.classList.add("closed");
       }
     }
   }
@@ -353,13 +354,13 @@ document.addEventListener("DOMContentLoaded", function () {
       if (isPlaying) return;
 
       var modal = document.querySelector(".modal");
-      modal.style.display = "flex";
+      modal.classList.remove("closed");
     });
 
   // Close modal
   document.querySelector(".modal-close").addEventListener("click", function () {
     console.log("clicked, close modal");
-    document.querySelector(".modal").style.display = "none";
+    modal.classList.add("closed");
   });
 
   // We listen to the resize event
