@@ -273,6 +273,14 @@ select.form-control:not([size]):not([multiple]) {
   flex: 4;
 }
 
+.icon-grid {
+  flex: 1;
+}
+
+.games-select {
+  flex: 2;
+}
+
 .game-area-content img {
   max-width: 2em;
   max-height: 2em;

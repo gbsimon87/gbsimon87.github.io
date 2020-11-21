@@ -15,95 +15,99 @@ document.addEventListener("DOMContentLoaded", function () {
     ".flash-card-description"
   );
   const modal = document.querySelector(".modal");
+  const iconGrid = document.querySelector(".icon-grid");
+  const modalClose = document.querySelector(".modal-close");
   const speedInput = document.querySelector(".speed-range-input");
   const speedInputLabel = document.querySelector(".speed-range-label");
   let currentGameSelected = gamesDropdown.value;
-  let numbers = [
-    {
-      id: 0,
-      title: "zero",
-    },
-    {
-      id: 1,
-      title: "one",
-    },
-    {
-      id: 2,
-      title: "two",
-    },
-    {
-      id: 3,
-      title: "three",
-    },
-    {
-      id: 4,
-      title: "four",
-    },
-    {
-      id: 5,
-      title: "five",
-    },
-    {
-      id: 6,
-      title: "six",
-    },
-    {
-      id: 7,
-      title: "seven",
-    },
-    {
-      id: 8,
-      title: "eight",
-    },
-    {
-      id: 9,
-      title: "nine",
-    },
-  ];
-  let colours = [
-    { hexValue: "", id: "red" },
-    { hexValue: "", id: "green" },
-    { hexValue: "", id: "blue" },
-    { hexValue: "", id: "yellow" },
-    { hexValue: "", id: "orange" },
-    { hexValue: "", id: "purple" },
-    { hexValue: "", id: "brown" },
-    { hexValue: "", id: "lightblue" },
-    { hexValue: "", id: "cyan" },
-    { hexValue: "", id: "pink" },
-  ];
-  let fruits = [
-    {
-      id: "apple",
-      title: "apple",
-    },
-    {
-      id: "banana",
-      title: "banana",
-    },
-    {
-      id: "kiwi",
-      title: "kiwi",
-    },
-    {
-      id: "orange",
-      title: "orange",
-    },
-    {
-      id: "pear",
-      title: "pear",
-    },
-    {
-      id: "tomato",
-      title: "tomato",
-    },
-  ];
-  let shapes = [
-    { id: "circle", title: "circle" },
-    { id: "triangle", title: "triangle" },
-    { id: "square", title: "square" },
-    { id: "star", title: "star" },
-  ];
+  let data = {
+    numbers: [
+      {
+        id: 0,
+        title: "zero",
+      },
+      {
+        id: 1,
+        title: "one",
+      },
+      {
+        id: 2,
+        title: "two",
+      },
+      {
+        id: 3,
+        title: "three",
+      },
+      {
+        id: 4,
+        title: "four",
+      },
+      {
+        id: 5,
+        title: "five",
+      },
+      {
+        id: 6,
+        title: "six",
+      },
+      {
+        id: 7,
+        title: "seven",
+      },
+      {
+        id: 8,
+        title: "eight",
+      },
+      {
+        id: 9,
+        title: "nine",
+      },
+    ],
+    colours: [
+      { hexValue: "", id: "red" },
+      { hexValue: "", id: "green" },
+      { hexValue: "", id: "blue" },
+      { hexValue: "", id: "yellow" },
+      { hexValue: "", id: "orange" },
+      { hexValue: "", id: "purple" },
+      { hexValue: "", id: "brown" },
+      { hexValue: "", id: "lightblue" },
+      { hexValue: "", id: "cyan" },
+      { hexValue: "", id: "pink" },
+    ],
+    fruits: [
+      {
+        id: "apple",
+        title: "apple",
+      },
+      {
+        id: "banana",
+        title: "banana",
+      },
+      {
+        id: "kiwi",
+        title: "kiwi",
+      },
+      {
+        id: "orange",
+        title: "orange",
+      },
+      {
+        id: "pear",
+        title: "pear",
+      },
+      {
+        id: "tomato",
+        title: "tomato",
+      },
+    ],
+    shapes: [
+      { id: "circle", title: "circle" },
+      { id: "triangle", title: "triangle" },
+      { id: "square", title: "square" },
+      { id: "star", title: "star" },
+    ],
+  };
 
   // TODO: ADD BUTTON FOR SOUND - PRONUNCIATION OF THE ITEM IN THE FLASHCARD
 
@@ -157,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function handleGameNumbers() {
-    var randomNumber = randomIntFromInterval(0, numbers.length - 1);
+    var randomNumber = randomIntFromInterval(0, data.numbers.length - 1);
     if (randomNumber === lastSelection) return;
 
     if (isPlaying) {
@@ -165,16 +169,16 @@ document.addEventListener("DOMContentLoaded", function () {
       const newFlashCardDescription = document.querySelector(
         ".flash-card-description"
       );
-      newFlashCardVisual.textContent = numbers[randomNumber].id;
-      newFlashCardDescription.textContent = numbers[randomNumber].title;
+      newFlashCardVisual.textContent = data.numbers[randomNumber].id;
+      newFlashCardDescription.textContent = data.numbers[randomNumber].title;
       lastSelection = randomNumber;
     }
   }
 
   function handleGameColours() {
-    var randomNumber = randomIntFromInterval(0, colours.length - 1);
+    var randomNumber = randomIntFromInterval(0, data.colours.length - 1);
     if (randomNumber === lastSelection) return;
-    var randomColour = colours[randomNumber];
+    var randomColour = data.colours[randomNumber];
     flashCard.style.borderColor = randomColour.id;
     flashCardVisual.textContent = "";
     flashCardVisual.style.backgroundColor = randomColour.id;
@@ -184,18 +188,18 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function handleGameFruits() {
-    var randomNumber = randomIntFromInterval(0, fruits.length - 1);
+    var randomNumber = randomIntFromInterval(0, data.fruits.length - 1);
     if (randomNumber === lastSelection) return;
-    var randomFruit = fruits[randomNumber];
+    var randomFruit = data.fruits[randomNumber];
     insertImage(randomFruit);
     flashCardDescription.textContent = randomFruit.title;
     lastSelection = randomNumber;
   }
 
   function handleGameShapes() {
-    var randomNumber = randomIntFromInterval(0, shapes.length - 1);
+    var randomNumber = randomIntFromInterval(0, data.shapes.length - 1);
     if (randomNumber === lastSelection) return;
-    var shape = shapes[randomNumber];
+    var shape = data.shapes[randomNumber];
     insertImage(shape);
     flashCardDescription.textContent = shape.title;
     lastSelection = randomNumber;
@@ -218,10 +222,10 @@ document.addEventListener("DOMContentLoaded", function () {
           clearInterval(globalTimer);
         } else {
           handleGameNumbers();
+          handleStartPlaying(globalTimer);
           globalTimer = setInterval(function () {
             handleGameNumbers();
           }, calculateSpeedInMs());
-          handleStartPlaying(globalTimer);
         }
         break;
       case "colours":
@@ -230,10 +234,10 @@ document.addEventListener("DOMContentLoaded", function () {
           clearInterval(globalTimer);
         } else {
           handleGameColours();
+          handleStartPlaying(globalTimer);
           globalTimer = setInterval(function () {
             handleGameColours();
           }, calculateSpeedInMs());
-          handleStartPlaying(globalTimer);
         }
         break;
       case "fruits":
@@ -242,10 +246,10 @@ document.addEventListener("DOMContentLoaded", function () {
           clearInterval(globalTimer);
         } else {
           handleGameFruits();
+          handleStartPlaying(globalTimer);
           globalTimer = setInterval(function () {
             handleGameFruits();
           }, calculateSpeedInMs());
-          handleStartPlaying(globalTimer);
         }
         break;
       case "shapes":
@@ -254,10 +258,10 @@ document.addEventListener("DOMContentLoaded", function () {
           clearInterval(globalTimer);
         } else {
           handleGameShapes();
+          handleStartPlaying(globalTimer);
           globalTimer = setInterval(function () {
             handleGameShapes();
           }, calculateSpeedInMs());
-          handleStartPlaying(globalTimer);
         }
         break;
       default:
@@ -295,6 +299,7 @@ document.addEventListener("DOMContentLoaded", function () {
           document.querySelector(".games-select").value =
             event.target.innerText;
           currentGameSelected = event.target.innerText;
+          console.log("isPlaying:", isPlaying);
           controlGameplay();
         });
       });
@@ -350,6 +355,16 @@ document.addEventListener("DOMContentLoaded", function () {
     controlGameplay();
   });
 
+  iconGrid.addEventListener("click", function () {
+    clearInterval(globalTimer);
+    document.querySelector(".game-area-controls").style.display = "none";
+    document.querySelector(".game-area-content-flash-card").style.display =
+      "none";
+    document.querySelector(".selection-board").style.display = "block";
+
+    isPlaying = false;
+  });
+
   playPauseButton.addEventListener("click", function () {
     controlGameplay();
   });
@@ -371,18 +386,18 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Close modal
-  document.querySelector(".modal-close").addEventListener("click", function () {
+  modalClose.addEventListener("click", function () {
     console.log("clicked, close modal");
     modal.classList.add("closed");
   });
+
+  document.body.addEventListener("click", handleHideModal, true);
 
   document.addEventListener("keyup", (event) => {
     if (event.code === "Space") {
       controlGameplay();
     }
   });
-
-  document.body.addEventListener("click", handleHideModal, true);
 
   window.addEventListener("resize", () => {
     let vh = window.innerHeight * 0.01;
