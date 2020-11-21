@@ -273,15 +273,43 @@ document.addEventListener("DOMContentLoaded", function () {
       const newGameHTML = `<div class="selection-board-game-${currentGame}"><span>${currentGame}</span></div>`;
       selectionBoard.insertAdjacentHTML("afterbegin", newGameHTML);
     });
+
+    // document
+    //   .querySelector('[class*="selection-board-game"]')
+    //   .addEventListener("click", function (event) {
+    //     console.log(event.target.innerText);
+    //   });
+
+    document
+      .querySelectorAll('[class*="selection-board-game"]')
+      .forEach(function (game) {
+        // console.log(game.innerText);
+        game.style.backgroundColor = getRandomColor();
+        game.addEventListener("click", function (event) {
+          console.log(event.target.innerText);
+          document.querySelector(".game-area-controls").style.display = "flex";
+          document.querySelector(
+            ".game-area-content-flash-card"
+          ).style.display = "block";
+          document.querySelector(".selection-board").style.display = "none";
+          document.querySelector(".games-select").value =
+            event.target.innerText;
+          currentGameSelected = event.target.innerText;
+          controlGameplay();
+        });
+      });
   }
 
-  gamesDropdown.addEventListener("click", function (e) {
-    clearGlobalInterval();
-    enablePlayButton();
-  });
+  function getRandomColor() {
+    var letters = "0123456789ABCDEF";
+    var color = "#";
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
 
-  // TODO: CHECK GAMESDROPDOWN LISTENER FOR USER SELECTION
-  gamesDropdown.addEventListener("input", function (e) {
+  function handleGameSelection(e) {
     var userSelection = e.target.value;
 
     flashCardVisual.style.backgroundColor = "white";
@@ -309,6 +337,17 @@ document.addEventListener("DOMContentLoaded", function () {
     currentGameSelected = userSelection;
     playPauseButton.textContent = "PLAY";
     isPlaying = false;
+  }
+
+  gamesDropdown.addEventListener("click", function (e) {
+    clearGlobalInterval();
+    enablePlayButton();
+  });
+
+  // TODO: CHECK GAMESDROPDOWN LISTENER FOR USER SELECTION
+  gamesDropdown.addEventListener("input", function (event) {
+    handleGameSelection(event);
+    controlGameplay();
   });
 
   playPauseButton.addEventListener("click", function () {

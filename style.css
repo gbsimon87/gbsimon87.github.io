@@ -293,23 +293,21 @@ select.form-control:not([size]):not([multiple]) {
 .selection-board {
   width: 90%;
   height: 90%;
-  border-radius: 0.5rem;
-  display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: none;
 }
 
 [class*="selection-board-game"] {
-  width: 100%;
-  height: 100px;
-  display: flex;
+  width: 50%;
+  height: 50%;
   justify-content: center;
   align-items: center;
   background: #000000b5;
   color: white;
+  display: inline-block;
 }
 
 .flash-card-visual {
@@ -323,6 +321,7 @@ select.form-control:not([size]):not([multiple]) {
   background: white;
   background-color: white;
   border-bottom: 1px solid #ccc;
+  height: 85%;
 }
 
 .flash-card-visual.categoryTitle {
