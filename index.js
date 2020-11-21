@@ -1,23 +1,25 @@
 document.addEventListener("DOMContentLoaded", function () {
-  var isPlaying = false;
-  var numbersInterval;
-  var fruitsInterval;
-  var shapesInterval;
-  var coloursInterval;
-  var lastSelection = "";
-  var playPauseButton = document.querySelector(
+  let isPlaying = false;
+  let numbersInterval;
+  let fruitsInterval;
+  let shapesInterval;
+  let coloursInterval;
+  let lastSelection = "";
+  let vh = window.innerHeight * 0.01;
+  const playPauseButton = document.querySelector(
     ".game-area-controls-play-pause"
   );
-  var gamesDropdown = document.querySelector(".games-select");
-  var currentGameSelected = gamesDropdown.value;
-  var flashCard = document.querySelector(".game-area-content-flash-card");
-  var flashCardVisual = document.querySelector(".flash-card-visual");
-  var flashCardDescription = document.querySelector(".flash-card-description");
-  var modal = document.querySelector(".modal");
-  let vh = window.innerHeight * 0.01;
-  var speedInput = document.querySelector(".speed-range-input");
-  var speedInputLabel = document.querySelector(".speed-range-label");
-  var numbers = [
+  const gamesDropdown = document.querySelector(".games-select");
+  const flashCard = document.querySelector(".game-area-content-flash-card");
+  const flashCardVisual = document.querySelector(".flash-card-visual");
+  const flashCardDescription = document.querySelector(
+    ".flash-card-description"
+  );
+  const modal = document.querySelector(".modal");
+  const speedInput = document.querySelector(".speed-range-input");
+  const speedInputLabel = document.querySelector(".speed-range-label");
+  let currentGameSelected = gamesDropdown.value;
+  let numbers = [
     {
       id: 0,
       title: "zero",
@@ -59,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
       title: "nine",
     },
   ];
-  var colours = [
+  let colours = [
     { hexValue: "", id: "red" },
     { hexValue: "", id: "green" },
     { hexValue: "", id: "blue" },
@@ -71,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
     { hexValue: "", id: "cyan" },
     { hexValue: "", id: "pink" },
   ];
-  var fruits = [
+  let fruits = [
     {
       id: "apple",
       title: "apple",
@@ -97,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
       title: "tomato",
     },
   ];
-  var shapes = [
+  let shapes = [
     { id: "circle", title: "circle" },
     { id: "triangle", title: "triangle" },
     { id: "square", title: "square" },
@@ -135,10 +137,6 @@ document.addEventListener("DOMContentLoaded", function () {
   function handleStopPlaying() {
     isPlaying = false;
     gamesDropdown.disabled = false;
-
-    // flashCardVisual.style.backgroundColor = "white";
-    // flashCardVisual.textContent = "";
-    // flashCardDescription.textContent = "";
     speedInput.disabled = false;
     playPauseButton.classList.add("btn-success");
     speedInputLabel.classList.remove("text-muted");
@@ -163,7 +161,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (randomNumber === lastSelection) return;
 
     if (isPlaying) {
-      console.log("is playing");
       const newFlashCardVisual = document.querySelector(".flash-card-visual");
       const newFlashCardDescription = document.querySelector(
         ".flash-card-description"
@@ -266,7 +263,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function disablePlayButton() {
-    console.log(playPauseButton);
     playPauseButton.classList.add("btn-disabled");
     playPauseButton.classList.remove("btn-success");
     playPauseButton.disabled = true;
@@ -295,6 +291,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  // TODO: CHECK GAMESDROPDOWN LISTENER FOR USE
   gamesDropdown.addEventListener("input", function (e) {
     var userSelection = e.target.value;
 
@@ -317,10 +314,7 @@ document.addEventListener("DOMContentLoaded", function () {
       disablePlayButton();
     }
 
-    currentGameSelected = userSelection;
-    document.querySelector(
-      ".flash-card-visual"
-    ).textContent = `${userSelection}`;
+    flashCardVisual.textContent = `${userSelection}`;
     document.querySelector(".flash-card-description").textContent = "";
     flashCardVisual.classList.add("categoryTitle");
     currentGameSelected = userSelection;
@@ -363,9 +357,7 @@ document.addEventListener("DOMContentLoaded", function () {
     modal.classList.add("closed");
   });
 
-  // We listen to the resize event
   window.addEventListener("resize", () => {
-    // We execute the same script as before
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty("--vh", `${vh}px`);
   });
