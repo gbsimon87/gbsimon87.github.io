@@ -1,15 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
   let isPlaying = false;
-  let numbersInterval;
-  let fruitsInterval;
-  let shapesInterval;
-  let coloursInterval;
+  let globalTimer = "";
   let lastSelection = "";
   let vh = window.innerHeight * 0.01;
-  const playPauseButton = document.querySelector(
+  let playPauseButton = document.querySelector(
     ".game-area-controls-play-pause"
   );
   const gamesDropdown = document.querySelector(".games-select");
+  const settingsIcon = document.querySelector(".settings-icon");
   const flashCard = document.querySelector(".game-area-content-flash-card");
   const flashCardVisual = document.querySelector(".flash-card-visual");
   const flashCardDescription = document.querySelector(
@@ -127,33 +125,34 @@ document.addEventListener("DOMContentLoaded", function () {
     return speedInput.value * 1000;
   }
 
-  function clearAllIntervals() {
-    clearInterval(numbersInterval);
-    clearInterval(coloursInterval);
-    clearInterval(fruitsInterval);
-    clearInterval(shapesInterval);
+  function clearGlobalInterval() {
+    clearInterval(globalTimer);
+  }
+
+  function enablePlayButton() {
+    playPauseButton.classList.remove("btn-danger");
+    playPauseButton.classList.add("btn-success");
+    playPauseButton.textContent = "PLAY";
+  }
+
+  function disablePlayButton() {
+    playPauseButton.classList.remove("btn-success");
+    playPauseButton.classList.add("btn-danger");
+    playPauseButton.textContent = "PAUSE";
   }
 
   function handleStopPlaying() {
     isPlaying = false;
-    gamesDropdown.disabled = false;
-    speedInput.disabled = false;
     playPauseButton.classList.add("btn-success");
-    speedInputLabel.classList.remove("text-muted");
-    playPauseButton.classList.remove("btn-danger");
-    playPauseButton.textContent = "PLAY";
+    enablePlayButton();
   }
 
   function handleStartPlaying() {
     document.querySelector(".flash-card-visual").style.backgroundColor = "#FFF";
     flashCardVisual.classList.remove("categoryTitle");
     isPlaying = true;
-    gamesDropdown.disabled = true;
-    speedInput.disabled = true;
     speedInputLabel.classList.add("text-muted");
-    playPauseButton.classList.remove("btn-success");
-    playPauseButton.classList.add("btn-danger");
-    playPauseButton.textContent = "STOP";
+    disablePlayButton();
   }
 
   function handleGameNumbers() {
@@ -201,54 +200,63 @@ document.addEventListener("DOMContentLoaded", function () {
     lastSelection = randomNumber;
   }
 
+  function handleHideModal(event) {
+    var target = event.target;
+    var modal = document.querySelector(".modal");
+    var isClickInside = modal.contains(target);
+    if (!isClickInside) {
+      modal.classList.add("closed");
+    }
+  }
+
   function controlGameplay() {
     switch (currentGameSelected) {
       case "numbers":
         if (isPlaying) {
           handleStopPlaying();
-          clearInterval(numbersInterval);
+          clearInterval(globalTimer);
         } else {
-          handleStartPlaying();
           handleGameNumbers();
-          numbersInterval = setInterval(function () {
+          globalTimer = setInterval(function () {
             handleGameNumbers();
           }, calculateSpeedInMs());
+          handleStartPlaying(globalTimer);
         }
         break;
       case "colours":
         if (isPlaying) {
           handleStopPlaying();
-          clearInterval(coloursInterval);
+          clearInterval(globalTimer);
         } else {
-          handleStartPlaying();
           handleGameColours();
-          coloursInterval = setInterval(function () {
+          globalTimer = setInterval(function () {
             handleGameColours();
           }, calculateSpeedInMs());
+          handleStartPlaying(globalTimer);
         }
         break;
       case "fruits":
         if (isPlaying) {
           handleStopPlaying();
-          clearInterval(fruitsInterval);
+          clearInterval(globalTimer);
         } else {
-          handleStartPlaying();
           handleGameFruits();
-          fruitsInterval = setInterval(function () {
+          globalTimer = setInterval(function () {
             handleGameFruits();
           }, calculateSpeedInMs());
+          handleStartPlaying(globalTimer);
         }
         break;
       case "shapes":
         if (isPlaying) {
           handleStopPlaying();
-          clearInterval(shapesInterval);
+          clearInterval(globalTimer);
         } else {
-          handleStartPlaying();
           handleGameShapes();
-          shapesInterval = setInterval(function () {
+          globalTimer = setInterval(function () {
             handleGameShapes();
           }, calculateSpeedInMs());
+          handleStartPlaying(globalTimer);
         }
         break;
       default:
@@ -256,42 +264,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  function enablePlayButton() {
-    playPauseButton.classList.remove("btn-disabled");
-    playPauseButton.classList.add("btn-success");
-    playPauseButton.disabled = false;
-  }
+  gamesDropdown.addEventListener("click", function (e) {
+    clearGlobalInterval();
+    enablePlayButton();
+  });
 
-  function disablePlayButton() {
-    playPauseButton.classList.add("btn-disabled");
-    playPauseButton.classList.remove("btn-success");
-    playPauseButton.disabled = true;
-  }
-
-  function getElementComputedStyle(element) {
-    return window.getComputedStyle(element).display;
-  }
-
-  function handleHideModal(event) {
-    var target = event.target;
-    var modal = document.querySelector(".modal");
-    var modalIsHidden = getElementComputedStyle(modal) === "none";
-
-    if (modalIsHidden) {
-      console.log("modal is hidden, do nothing");
-    } else {
-      console.log("modal is VISIBLE");
-      var isClickInside = modal.contains(target);
-      if (isClickInside) {
-        console.log("clicked inside modal");
-      } else {
-        console.log("clicked OUTSIDE modal");
-        modal.classList.add("closed");
-      }
-    }
-  }
-
-  // TODO: CHECK GAMESDROPDOWN LISTENER FOR USE
+  // TODO: CHECK GAMESDROPDOWN LISTENER FOR USER SELECTION
   gamesDropdown.addEventListener("input", function (e) {
     var userSelection = e.target.value;
 
@@ -299,23 +277,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (userSelection === "numbers") {
       enablePlayButton();
-      clearInterval(numbersInterval);
+      clearGlobalInterval();
     } else if (userSelection === "fruits") {
       enablePlayButton();
-      clearInterval(fruitsInterval);
+      clearGlobalInterval();
     } else if (userSelection === "shapes") {
       enablePlayButton();
-      clearInterval(shapesInterval);
+      clearGlobalInterval();
     } else if (userSelection === "colours") {
       enablePlayButton();
-      clearInterval(coloursInterval);
+      clearGlobalInterval();
     } else {
-      clearAllIntervals();
+      clearGlobalInterval();
       disablePlayButton();
     }
 
     flashCardVisual.textContent = `${userSelection}`;
-    document.querySelector(".flash-card-description").textContent = "";
+    flashCardDescription.textContent = "";
     flashCardVisual.classList.add("categoryTitle");
     currentGameSelected = userSelection;
     playPauseButton.textContent = "PLAY";
@@ -327,11 +305,25 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   speedInput.addEventListener("change", function (event) {
-    clearAllIntervals();
+    clearGlobalInterval();
 
     if (isPlaying) {
       controlGameplay();
     }
+  });
+
+  // Attach listener settings icon / open modal
+  settingsIcon.addEventListener("click", function () {
+    var modal = document.querySelector(".modal");
+    modal.classList.remove("closed");
+    clearGlobalInterval();
+    enablePlayButton();
+  });
+
+  // Close modal
+  document.querySelector(".modal-close").addEventListener("click", function () {
+    console.log("clicked, close modal");
+    modal.classList.add("closed");
   });
 
   document.addEventListener("keyup", (event) => {
@@ -340,29 +332,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Attach listener settings icon / open modal
-  document
-    .querySelector(".settings-icon")
-    .addEventListener("click", function () {
-      console.log("clicked, settings icon");
-      if (isPlaying) return;
-
-      var modal = document.querySelector(".modal");
-      modal.classList.remove("closed");
-    });
-
-  // Close modal
-  document.querySelector(".modal-close").addEventListener("click", function () {
-    console.log("clicked, close modal");
-    modal.classList.add("closed");
-  });
+  document.body.addEventListener("click", handleHideModal, true);
 
   window.addEventListener("resize", () => {
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty("--vh", `${vh}px`);
   });
-
-  document.body.addEventListener("click", handleHideModal, true);
 
   function init() {
     setDocumentHeight();
