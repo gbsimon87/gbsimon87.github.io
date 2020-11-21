@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ".game-area-controls-play-pause"
   );
   const gamesDropdown = document.querySelector(".games-select");
+  const selectionBoard = document.querySelector(".selection-board");
   const settingsIcon = document.querySelector(".settings-icon");
   const flashCard = document.querySelector(".game-area-content-flash-card");
   const flashCardVisual = document.querySelector(".flash-card-visual");
@@ -264,6 +265,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  function buildSelectionBoard() {
+    const currentGames = ["numbers", "colours", "fruits", "shapes"];
+
+    currentGames.forEach(function (currentGame) {
+      console.log(currentGame);
+      const newGameHTML = `<div class="selection-board-game-${currentGame}"><span>${currentGame}</span></div>`;
+      selectionBoard.insertAdjacentHTML("afterbegin", newGameHTML);
+    });
+  }
+
   gamesDropdown.addEventListener("click", function (e) {
     clearGlobalInterval();
     enablePlayButton();
@@ -341,6 +352,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function init() {
     setDocumentHeight();
+    buildSelectionBoard();
   }
 
   init();

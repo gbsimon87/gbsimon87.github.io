@@ -197,6 +197,15 @@ label {
   font-size: 2rem;
 }
 
+.game-area-controls {
+  display: none;
+  border-top: 1px solid #e5e5e5;
+  flex-flow: column;
+  justify-content: space-evenly;
+  flex: 1;
+  text-align: center;
+}
+
 .game-area-controls-category {
   display: flex;
   justify-content: space-evenly;
@@ -212,15 +221,6 @@ label {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-}
-
-.game-area-controls {
-  border-top: 1px solid #e5e5e5;
-  display: flex;
-  flex-flow: column;
-  justify-content: space-evenly;
-  flex: 1;
-  text-align: center;
 }
 
 select.form-control:not([size]):not([multiple]) {
@@ -246,11 +246,6 @@ select.form-control:not([size]):not([multiple]) {
   border-color: #80bdff;
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
-.game-area-controls {
-  display: flex;
-  justify-content: space-evenly;
 }
 
 .settings-icon {
@@ -287,12 +282,34 @@ select.form-control:not([size]):not([multiple]) {
   width: 90%;
   height: 90%;
   border-radius: 0.5rem;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.selection-board {
+  width: 90%;
+  height: 90%;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+[class*="selection-board-game"] {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000000b5;
+  color: white;
 }
 
 .flash-card-visual {
