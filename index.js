@@ -284,6 +284,8 @@ document.addEventListener("DOMContentLoaded", function () {
         game.style.backgroundImage =
           "url(/images/categoryBGImages/" + game.innerText + ".png)";
 
+        game.style.backgroundColor = getRandomColor();
+
         game.addEventListener("click", function (event) {
           console.log(event.target.innerText);
           document.querySelector(".game-area-controls").style.display = "flex";

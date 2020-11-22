@@ -325,10 +325,15 @@ select.form-control:not([size]):not([multiple]) {
   background-repeat: no-repeat;
   color: black;
   background-position: center;
-  background-size: 7em 5em;
   background-color: white;
   text-align: center;
-  padding-top: 2em;
+  padding-top: 6em;
+}
+
+[class*="selection-board-game"] span {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
 }
 
 .flash-card-visual {
