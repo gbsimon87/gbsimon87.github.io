@@ -404,7 +404,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   function init() {
-    // setDocumentHeight();
+    setDocumentHeight();
     buildSelectionBoard();
   }
 
