@@ -284,7 +284,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("game is:", game.querySelector("span").innerText);
         const fileName = game.querySelector("span").innerText;
         game.style.backgroundImage =
-          "url(/images/catwegoryBGImages/" + fileName + ".png)";
+          "url(/images/categoryBGImages/" + fileName + ".png)";
 
         // game.style.backgroundColor = getRandomColor();
 
