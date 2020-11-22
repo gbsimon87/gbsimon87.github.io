@@ -291,9 +291,8 @@ select.form-control:not([size]):not([multiple]) {
 
 .selection-board {
   width: 90%;
-  height: 90%;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   grid-column-gap: 2rem;
   grid-row-gap: 2rem;
 }
@@ -307,6 +306,7 @@ select.form-control:not([size]):not([multiple]) {
 [class*="selection-board-game"] {
   width: 100%;
   justify-content: center;
+  min-height: 5em;
   align-items: flex-end;
   color: white;
   display: flex;
@@ -334,13 +334,13 @@ select.form-control:not([size]):not([multiple]) {
 
 .flash-card-visual {
   height: 85%;
+  max-height: 15em;
   justify-content: center;
   align-items: center;
   display: flex;
   text-align: center;
   min-width: 100%;
   background: white;
-  border-bottom: 1px solid #ccc;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -348,6 +348,7 @@ select.form-control:not([size]):not([multiple]) {
 
 .flash-card-visual img {
   max-width: 100%;
+  max-height: 100%;
 }
 
 .flash-card-visual.categoryTitle {
@@ -367,10 +368,23 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 @media only screen and (min-width: 480px) {
-  /* For mobile phones: */
-  [class*="selection-board-game"] {
-    width: 50%;
-    margin-bottom: 0;
-    background-size: contain;
+  .selection-board {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .selection-board {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .game-area-content-flash-card {
+    min-width: 25em;
+    width: auto;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .selection-board {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
