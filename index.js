@@ -294,7 +294,6 @@ document.addEventListener("DOMContentLoaded", function () {
           handleStopPlaying();
           clearInterval(globalTimer);
         } else {
-          s;
           handleGameAnimals();
           handleStartPlaying(globalTimer);
           globalTimer = setInterval(function () {
