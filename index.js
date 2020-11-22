@@ -69,16 +69,12 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     ],
     colours: [
-      { hexValue: "", id: "red" },
-      { hexValue: "", id: "green" },
-      { hexValue: "", id: "blue" },
-      { hexValue: "", id: "yellow" },
-      { hexValue: "", id: "orange" },
-      { hexValue: "", id: "purple" },
-      { hexValue: "", id: "brown" },
-      { hexValue: "", id: "lightblue" },
-      { hexValue: "", id: "cyan" },
-      { hexValue: "", id: "pink" },
+      { id: "blue", title: "blue" },
+      { id: "brown", title: "brown" },
+      { id: "green", title: "green" },
+      { id: "purple", title: "purple" },
+      { id: "red", title: "red" },
+      { id: "yellow", title: "yellow" },
     ],
     fruits: [
       {
@@ -90,8 +86,24 @@ document.addEventListener("DOMContentLoaded", function () {
         title: "banana",
       },
       {
+        id: "grapefruit",
+        title: "grapefruit",
+      },
+      {
         id: "kiwi",
         title: "kiwi",
+      },
+      {
+        id: "lemon",
+        title: "lemon",
+      },
+      {
+        id: "lime",
+        title: "lime",
+      },
+      {
+        id: "mango",
+        title: "mango",
       },
       {
         id: "orange",
@@ -102,57 +114,99 @@ document.addEventListener("DOMContentLoaded", function () {
         title: "pear",
       },
       {
+        id: "pineapple",
+        title: "pineapple",
+      },
+      {
+        id: "strawberry",
+        title: "strawberry",
+      },
+      {
         id: "tomato",
         title: "tomato",
       },
-    ],
-    numbers: [
       {
-        id: 0,
-        title: "zero",
-      },
-      {
-        id: 1,
-        title: "one",
-      },
-      {
-        id: 2,
-        title: "two",
-      },
-      {
-        id: 3,
-        title: "three",
-      },
-      {
-        id: 4,
-        title: "four",
-      },
-      {
-        id: 5,
-        title: "five",
-      },
-      {
-        id: 6,
-        title: "six",
-      },
-      {
-        id: 7,
-        title: "seven",
-      },
-      {
-        id: 8,
-        title: "eight",
-      },
-      {
-        id: 9,
-        title: "nine",
+        id: "watermelon",
+        title: "watermelon",
       },
     ],
-    shapes: [
-      { id: "circle", title: "circle" },
-      { id: "triangle", title: "triangle" },
-      { id: "square", title: "square" },
-      { id: "star", title: "star" },
+    vegetables: [
+      { id: "broccoli", title: "broccoli" },
+      { id: "carrot", title: "carrot" },
+      { id: "lettuce", title: "lettuce" },
+      { id: "mushroom", title: "mushroom" },
+      { id: "onion", title: "onion" },
+      { id: "potato", title: "potato" },
+    ],
+    // numbers: [
+    //   {
+    //     id: 0,
+    //     title: "zero",
+    //   },
+    //   {
+    //     id: 1,
+    //     title: "one",
+    //   },
+    //   {
+    //     id: 2,
+    //     title: "two",
+    //   },
+    //   {
+    //     id: 3,
+    //     title: "three",
+    //   },
+    //   {
+    //     id: 4,
+    //     title: "four",
+    //   },
+    //   {
+    //     id: 5,
+    //     title: "five",
+    //   },
+    //   {
+    //     id: 6,
+    //     title: "six",
+    //   },
+    //   {
+    //     id: 7,
+    //     title: "seven",
+    //   },
+    //   {
+    //     id: 8,
+    //     title: "eight",
+    //   },
+    //   {
+    //     id: 9,
+    //     title: "nine",
+    //   },
+    // ],
+    // shapes: [
+    //   { id: "circle", title: "circle" },
+    //   { id: "triangle", title: "triangle" },
+    //   { id: "square", title: "square" },
+    //   { id: "star", title: "star" },
+    // ],
+    flags: [
+      {
+        id: "canada",
+        title: "canada",
+      },
+      {
+        id: "cuba",
+        title: "cuba",
+      },
+      {
+        id: "jamaica",
+        title: "jamaica",
+      },
+      {
+        id: "mexico",
+        title: "mexico",
+      },
+      {
+        id: "united_states",
+        title: "united_states",
+      },
     ],
   };
 
@@ -160,6 +214,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function setDocumentHeight() {
     document.documentElement.style.setProperty("--vh", `${vh}px`);
+  }
+
+  function replaceUnderscoreWithSpace(str) {
+    return str.replace(/_/g, " ");
+  }
+
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  function toTitleCase(str) {
+    return str.replace(/\w\S*/g, function (txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
   }
 
   function insertImage(randomImage) {
@@ -223,15 +291,12 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function handleGameColours() {
-    var randomNumber = randomIntFromInterval(0, games.colours.length - 1);
-    if (randomNumber === lastSelection) return;
-    var randomColour = games.colours[randomNumber];
-    flashCard.style.borderColor = randomColour.id;
-    flashCardVisual.textContent = "";
-    flashCardVisual.style.backgroundColor = randomColour.id;
-    flashCardDescription.textContent = randomColour.id;
-    flashCardDescription.style.borderColor = randomColour.id;
-    lastSelection = randomNumber;
+    var randomColour = randomIntFromInterval(0, games.colours.length - 1);
+    if (randomColour === lastSelection) return;
+    var randomColour = games.colours[randomColour];
+    insertImage(randomColour);
+    flashCardDescription.textContent = randomColour.title;
+    lastSelection = randomColour;
   }
 
   function handleGameFruits() {
@@ -241,6 +306,15 @@ document.addEventListener("DOMContentLoaded", function () {
     insertImage(randomFruit);
     flashCardDescription.textContent = randomFruit.title;
     lastSelection = randomNumber;
+  }
+
+  function handleGameVegetables() {
+    var randomVegetable = randomIntFromInterval(0, games.vegetables.length - 1);
+    if (randomVegetable === lastSelection) return;
+    var randomVegetable = games.vegetables[randomVegetable];
+    insertImage(randomVegetable);
+    flashCardDescription.textContent = randomVegetable.title;
+    lastSelection = randomVegetable;
   }
 
   function handleGameShapes() {
@@ -271,70 +345,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  function controlGameplay() {
-    switch (currentGameSelected) {
-      case "numbers":
-        if (isPlaying) {
-          handleStopPlaying();
-          clearInterval(globalTimer);
-        } else {
-          handleGameNumbers();
-          handleStartPlaying(globalTimer);
-          globalTimer = setInterval(function () {
-            handleGameNumbers();
-          }, calculateSpeedInMs());
-        }
-        break;
-      case "colours":
-        if (isPlaying) {
-          handleStopPlaying();
-          clearInterval(globalTimer);
-        } else {
-          handleGameColours();
-          handleStartPlaying(globalTimer);
-          globalTimer = setInterval(function () {
-            handleGameColours();
-          }, calculateSpeedInMs());
-        }
-        break;
-      case "fruits":
-        if (isPlaying) {
-          handleStopPlaying();
-          clearInterval(globalTimer);
-        } else {
-          handleGameFruits();
-          handleStartPlaying(globalTimer);
-          globalTimer = setInterval(function () {
-            handleGameFruits();
-          }, calculateSpeedInMs());
-        }
-        break;
-      case "shapes":
-        if (isPlaying) {
-          handleStopPlaying();
-          clearInterval(globalTimer);
-        } else {
-          handleGameShapes();
-          handleStartPlaying(globalTimer);
-          globalTimer = setInterval(function () {
-            handleGameShapes();
-          }, calculateSpeedInMs());
-        }
-        break;
-      case "animals":
-        if (isPlaying) {
-          handleStopPlaying();
-          clearInterval(globalTimer);
-        } else {
-          handleGameAnimals();
-          handleStartPlaying(globalTimer);
-          globalTimer = setInterval(function () {
-            handleGameAnimals();
-          }, calculateSpeedInMs());
-        }
-      default:
-        break;
-    }
+  function handleGameFlags() {
+    console.log("handleGameFlags");
+    var randomNumber = randomIntFromInterval(0, games.flags.length - 1);
+    if (randomNumber === lastSelection) return;
+    var randomFlag = games.flags[randomNumber];
+    insertImage(randomFlag);
+    flashCardDescription.textContent = toTitleCase(
+      replaceUnderscoreWithSpace(randomFlag.title)
+    );
+    lastSelection = randomNumber;
   }
 
   function buildSelectionBoard() {
@@ -409,6 +429,97 @@ document.addEventListener("DOMContentLoaded", function () {
     currentGameSelected = userSelection;
     playPauseButton.textContent = "PLAY";
     isPlaying = false;
+  }
+
+  function controlGameplay() {
+    switch (currentGameSelected) {
+      case "numbers":
+        if (isPlaying) {
+          handleStopPlaying();
+          clearInterval(globalTimer);
+        } else {
+          handleGameNumbers();
+          handleStartPlaying(globalTimer);
+          globalTimer = setInterval(function () {
+            handleGameNumbers();
+          }, calculateSpeedInMs());
+        }
+        break;
+      case "colours":
+        if (isPlaying) {
+          handleStopPlaying();
+          clearInterval(globalTimer);
+        } else {
+          handleGameColours();
+          handleStartPlaying(globalTimer);
+          globalTimer = setInterval(function () {
+            handleGameColours();
+          }, calculateSpeedInMs());
+        }
+        break;
+      case "fruits":
+        if (isPlaying) {
+          handleStopPlaying();
+          clearInterval(globalTimer);
+        } else {
+          handleGameFruits();
+          handleStartPlaying(globalTimer);
+          globalTimer = setInterval(function () {
+            handleGameFruits();
+          }, calculateSpeedInMs());
+        }
+        break;
+      case "vegetables":
+        if (isPlaying) {
+          handleStopPlaying();
+          clearInterval(globalTimer);
+        } else {
+          handleGameVegetables();
+          handleStartPlaying(globalTimer);
+          globalTimer = setInterval(function () {
+            handleGameVegetables();
+          }, calculateSpeedInMs());
+        }
+        break;
+      case "shapes":
+        if (isPlaying) {
+          handleStopPlaying();
+          clearInterval(globalTimer);
+        } else {
+          handleGameShapes();
+          handleStartPlaying(globalTimer);
+          globalTimer = setInterval(function () {
+            handleGameShapes();
+          }, calculateSpeedInMs());
+        }
+        break;
+      case "animals":
+        if (isPlaying) {
+          handleStopPlaying();
+          clearInterval(globalTimer);
+        } else {
+          handleGameAnimals();
+          handleStartPlaying(globalTimer);
+          globalTimer = setInterval(function () {
+            handleGameAnimals();
+          }, calculateSpeedInMs());
+        }
+        break;
+      case "flags":
+        if (isPlaying) {
+          handleStopPlaying();
+          clearInterval(globalTimer);
+        } else {
+          handleGameFlags();
+          handleStartPlaying(globalTimer);
+          globalTimer = setInterval(function () {
+            handleGameFlags();
+          }, calculateSpeedInMs());
+        }
+        break;
+      default:
+        break;
+    }
   }
 
   gamesDropdown.addEventListener("click", function (e) {
