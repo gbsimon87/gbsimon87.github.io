@@ -311,7 +311,6 @@ select.form-control:not([size]):not([multiple]) {
 [class*="selection-board-game"] {
   width: 100%;
   height: 20%;
-  margin-bottom: 1.5rem;
   justify-content: center;
   align-items: center;
   display: inline-block;
@@ -321,15 +320,15 @@ select.form-control:not([size]):not([multiple]) {
   background-position: center;
   background-color: white;
   text-align: center;
-  padding-top: 2.5rem;
+  padding-top: 3.5rem;
 }
 
 [class*="selection-board-game"] span {
-  padding: 0.5rem;
+  padding: 0;
   border-radius: 0.5rem;
-  background: #000000c9;
+  background: #000000b5;
   color: white;
-  min-width: 4em;
+  min-width: 5em;
   display: inline-block;
 }
 
