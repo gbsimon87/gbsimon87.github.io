@@ -304,6 +304,7 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 [class*="selection-board-game"] {
+  cursor: pointer;
   width: 100%;
   justify-content: center;
   min-height: 5em;
@@ -333,22 +334,19 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .flash-card-visual {
-  height: 85%;
   max-height: 15em;
+  min-height: 15em;
+  max-width: 100%;
   justify-content: center;
   align-items: center;
-  display: flex;
   text-align: center;
   min-width: 100%;
   background: white;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
 }
 
 .flash-card-visual img {
-  max-width: 100%;
   max-height: 100%;
+  /* max-width: 100%; */
 }
 
 .flash-card-visual.categoryTitle {
@@ -378,7 +376,10 @@ select.form-control:not([size]):not([multiple]) {
     grid-template-columns: repeat(3, 1fr);
   }
   .game-area-content-flash-card {
-    min-width: 25em;
+    width: 30em;
+  }
+  .game-area-controls {
+    min-width: 40em;
     width: auto;
   }
 }
