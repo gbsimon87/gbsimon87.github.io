@@ -331,9 +331,11 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 [class*="selection-board-game"] span {
-  background: white;
   padding: 1.5rem;
   border-radius: 0.5rem;
+  font-size: 2rem;
+  background: #000000c9;
+  color: white;
 }
 
 .flash-card-visual {
