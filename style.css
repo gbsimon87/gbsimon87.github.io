@@ -282,6 +282,7 @@ select.form-control:not([size]):not([multiple]) {
   width: 100%;
   border-radius: 0.5rem;
   min-height: 25em;
+  height: 25em;
   display: none;
   flex-direction: column;
   justify-content: center;
@@ -296,8 +297,9 @@ select.form-control:not([size]):not([multiple]) {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  overflow: hidden;
+  overflow: scroll;
   box-shadow: none;
+  flex-flow: row wrap;
 }
 
 .selection-board-game-fruits {
@@ -307,11 +309,11 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 [class*="selection-board-game"] {
-  width: 50%;
-  height: 50%;
+  width: 100%;
+  height: 20%;
+  margin-bottom: 1.5rem;
   justify-content: center;
   align-items: center;
-  color: white;
   display: inline-block;
   background-size: contain;
   background-repeat: no-repeat;
@@ -319,13 +321,12 @@ select.form-control:not([size]):not([multiple]) {
   background-position: center;
   background-color: white;
   text-align: center;
-  padding: 0.5rem;
+  padding-top: 2.5rem;
 }
 
 [class*="selection-board-game"] span {
   padding: 0.5rem;
   border-radius: 0.5rem;
-  font-size: 2rem;
   background: #000000c9;
   color: white;
   min-width: 4em;
@@ -366,4 +367,12 @@ select.form-control:not([size]):not([multiple]) {
   background: white;
   overflow: hidden;
   font-size: 3rem;
+}
+
+@media only screen and (min-width: 480px) {
+  /* For mobile phones: */
+  [class*="selection-board-game"] {
+    width: 50%;
+    margin-bottom: 0;
+  }
 }

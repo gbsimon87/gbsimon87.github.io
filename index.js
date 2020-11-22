@@ -359,7 +359,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".game-area-controls").style.display = "none";
     document.querySelector(".game-area-content-flash-card").style.display =
       "none";
-    document.querySelector(".selection-board").style.display = "block";
+    document.querySelector(".selection-board").style.display = "flex";
 
     isPlaying = false;
   });
@@ -404,7 +404,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   function init() {
-    setDocumentHeight();
+    // setDocumentHeight();
     buildSelectionBoard();
   }
 
