@@ -130,7 +130,7 @@ label {
   display: flex;
   height: 100vh; /* Fallback for browsers that do not support Custom Properties */
   height: calc(var(--vh, 1vh) * 100);
-  padding: 0;
+  padding: 1em 0;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -270,7 +270,7 @@ select.form-control:not([size]):not([multiple]) {
   margin: 0;
   width: 100%;
   font-size: 1.5em;
-  flex: 2;
+  flex: 4;
 }
 
 .games-select {
@@ -279,16 +279,15 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .game-area-content-flash-card {
-  width: 100%;
-  border-radius: 0.5rem;
-  min-height: 25em;
-  height: 25em;
   display: none;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   overflow: hidden;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  width: 100%;
+  border-radius: 0.5rem;
+  height: 100%;
 }
 
 .selection-board {
@@ -343,7 +342,8 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .flash-card-visual {
-  min-height: 20em;
+  /* min-height: 20em; */
+  height: 85%;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -351,7 +351,6 @@ select.form-control:not([size]):not([multiple]) {
   min-width: 100%;
   background: white;
   border-bottom: 1px solid #ccc;
-  height: 85%;
 }
 
 .flash-card-visual.categoryTitle {
