@@ -300,6 +300,7 @@ select.form-control:not([size]):not([multiple]) {
   overflow: scroll;
   box-shadow: none;
   flex-flow: row wrap;
+  display: flex;
 }
 
 .selection-board-game-fruits {
