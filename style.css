@@ -203,7 +203,7 @@ label {
   flex-flow: column;
   justify-content: space-evenly;
   text-align: center;
-  padding: 1em 0;
+  flex: 1;
 }
 
 .game-area-controls-category {
@@ -270,7 +270,7 @@ select.form-control:not([size]):not([multiple]) {
   margin: 0;
   width: 100%;
   font-size: 1.5em;
-  flex: 4;
+  flex: 10;
 }
 
 .games-select {
@@ -341,15 +341,13 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .flash-card-visual {
-  flex: 10;
+  min-height: 20em;
   justify-content: center;
   align-items: center;
   display: flex;
   text-align: center;
   min-width: 100%;
-  font-size: 6rem;
   background: white;
-  background-color: white;
   border-bottom: 1px solid #ccc;
   height: 85%;
 }
