@@ -202,8 +202,8 @@ label {
   border-top: 1px solid #e5e5e5;
   flex-flow: column;
   justify-content: space-evenly;
-  flex: 1;
   text-align: center;
+  padding: 1em 0;
 }
 
 .game-area-controls-category {
@@ -215,6 +215,7 @@ label {
 .game-area-controls-extra-settings {
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 
 .settings-speed {
@@ -249,8 +250,7 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .settings-icon {
-  width: 3em;
-  height: 3em;
+  width: 2.5em;
   cursor: pointer;
 }
 
@@ -273,23 +273,15 @@ select.form-control:not([size]):not([multiple]) {
   flex: 4;
 }
 
-.icon-grid {
-  flex: 1;
-}
-
 .games-select {
   flex: 2;
-}
-
-.game-area-content img {
-  max-width: 2em;
-  max-height: 2em;
+  display: none;
 }
 
 .game-area-content-flash-card {
-  width: 90%;
-  height: 90%;
+  width: 100%;
   border-radius: 0.5rem;
+  min-height: 25em;
   display: none;
   flex-direction: column;
   justify-content: center;
@@ -349,7 +341,7 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .flash-card-visual {
-  flex: 3;
+  flex: 10;
   justify-content: center;
   align-items: center;
   display: flex;

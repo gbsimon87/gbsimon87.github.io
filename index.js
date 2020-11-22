@@ -293,7 +293,7 @@ document.addEventListener("DOMContentLoaded", function () {
           document.querySelector(".game-area-controls").style.display = "flex";
           document.querySelector(
             ".game-area-content-flash-card"
-          ).style.display = "block";
+          ).style.display = "flex";
           document.querySelector(".selection-board").style.display = "none";
           document.querySelector(".games-select").value =
             event.target.innerText;
