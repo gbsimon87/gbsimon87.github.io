@@ -35,6 +35,38 @@ document.addEventListener("DOMContentLoaded", function () {
         id: "cow",
         title: "cow",
       },
+      {
+        id: "buffalo",
+        title: "buffalo",
+      },
+      {
+        id: "cat",
+        title: "cat",
+      },
+      {
+        id: "dog",
+        title: "dog",
+      },
+      {
+        id: "donkey",
+        title: "donkey",
+      },
+      {
+        id: "cheetah",
+        title: "cheetah",
+      },
+      {
+        id: "monkey",
+        title: "monkey",
+      },
+      {
+        id: "whale",
+        title: "whale",
+      },
+      {
+        id: "horse",
+        title: "horse",
+      },
     ],
     colours: [
       { hexValue: "", id: "red" },
