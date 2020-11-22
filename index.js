@@ -21,6 +21,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const speedInputLabel = document.querySelector(".speed-range-label");
   let currentGameSelected = gamesDropdown.value;
   let games = {
+    animals: [
+      {
+        id: "cat",
+        title: "cat",
+      },
+    ],
     colours: [
       { hexValue: "", id: "red" },
       { hexValue: "", id: "green" },
