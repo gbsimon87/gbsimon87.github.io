@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
   );
   const modal = document.querySelector(".modal");
   const iconGrid = document.querySelector(".icon-grid");
+  const controls = document.querySelector(".game-area-controls");
   const modalClose = document.querySelector(".modal-close");
   const speedInput = document.querySelector(".speed-range-input");
   const speedInputLabel = document.querySelector(".speed-range-label");
@@ -23,8 +24,16 @@ document.addEventListener("DOMContentLoaded", function () {
   let games = {
     animals: [
       {
-        id: "cat",
-        title: "cat",
+        id: "lion",
+        title: "lion",
+      },
+      {
+        id: "tiger",
+        title: "tiger",
+      },
+      {
+        id: "cow",
+        title: "cow",
       },
     ],
     colours: [
@@ -211,6 +220,16 @@ document.addEventListener("DOMContentLoaded", function () {
     lastSelection = randomNumber;
   }
 
+  function handleGameAnimals() {
+    console.log("handleGameAnimals");
+    var randomNumber = randomIntFromInterval(0, games.animals.length - 1);
+    if (randomNumber === lastSelection) return;
+    var randomAnimal = games.animals[randomNumber];
+    insertImage(randomAnimal);
+    flashCardDescription.textContent = randomAnimal.title;
+    lastSelection = randomNumber;
+  }
+
   function handleHideModal(event) {
     var target = event.target;
     var modal = document.querySelector(".modal");
@@ -270,6 +289,18 @@ document.addEventListener("DOMContentLoaded", function () {
           }, calculateSpeedInMs());
         }
         break;
+      case "animals":
+        if (isPlaying) {
+          handleStopPlaying();
+          clearInterval(globalTimer);
+        } else {
+          s;
+          handleGameAnimals();
+          handleStartPlaying(globalTimer);
+          globalTimer = setInterval(function () {
+            handleGameAnimals();
+          }, calculateSpeedInMs());
+        }
       default:
         break;
     }
@@ -362,10 +393,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   iconGrid.addEventListener("click", function () {
     clearInterval(globalTimer);
-    document.querySelector(".game-area-controls").style.display = "none";
-    document.querySelector(".game-area-content-flash-card").style.display =
-      "none";
-    document.querySelector(".selection-board").style.display = "grid";
+    controls.style.display = "none";
+    flashCard.style.display = "none";
+    selectionBoard.style.display = "grid";
 
     isPlaying = false;
   });

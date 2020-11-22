@@ -340,7 +340,6 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .flash-card-visual {
-  /* min-height: 20em; */
   height: 85%;
   justify-content: center;
   align-items: center;
@@ -349,6 +348,13 @@ select.form-control:not([size]):not([multiple]) {
   min-width: 100%;
   background: white;
   border-bottom: 1px solid #ccc;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.flash-card-visual img {
+  max-width: 100%;
 }
 
 .flash-card-visual.categoryTitle {
