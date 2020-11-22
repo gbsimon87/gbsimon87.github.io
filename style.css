@@ -321,21 +321,30 @@ select.form-control:not([size]):not([multiple]) {
   align-items: center;
   color: white;
   display: inline-block;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   color: black;
   background-position: center;
   background-color: white;
   text-align: center;
-  padding-top: 6em;
+  padding: 0.5rem;
 }
 
 [class*="selection-board-game"] span {
+  display: none;
   padding: 1.5rem;
   border-radius: 0.5rem;
   font-size: 2rem;
   background: #000000c9;
   color: white;
+}
+
+[class*="selection-board-game"] .inner {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 4em;
+  background-image: url(/images/categoryBGImages/shapes.png);
+  background-size: cover;
 }
 
 .flash-card-visual {

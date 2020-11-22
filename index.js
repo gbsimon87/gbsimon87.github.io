@@ -281,10 +281,12 @@ document.addEventListener("DOMContentLoaded", function () {
     document
       .querySelectorAll('[class*="selection-board-game"]')
       .forEach(function (game) {
+        console.log("game is:", game.querySelector("span").innerText);
+        const fileName = game.querySelector("span").innerText;
         game.style.backgroundImage =
-          "url(/images/categoryBGImages/" + game.innerText + ".png)";
+          "url(/images/categoryBGImages/" + fileName + ".png)";
 
-        game.style.backgroundColor = getRandomColor();
+        // game.style.backgroundColor = getRandomColor();
 
         game.addEventListener("click", function (event) {
           console.log(event.target.innerText);
