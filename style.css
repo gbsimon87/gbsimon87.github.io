@@ -319,7 +319,6 @@ select.form-control:not([size]):not([multiple]) {
 
 [class*="selection-board-game"] span {
   padding: 0 1em;
-  border-radius: 0.5rem;
   background: #000000b5;
   text-align: center;
   width: 100%;
