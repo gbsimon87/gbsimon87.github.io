@@ -313,14 +313,15 @@ select.form-control:not([size]):not([multiple]) {
   height: 20%;
   justify-content: center;
   align-items: center;
-  display: inline-block;
-  background-size: contain;
-  background-repeat: no-repeat;
   color: black;
+  display: inline-block;
+  background-size: cover;
+  background-repeat: no-repeat;
   background-position: center;
   background-color: white;
   text-align: center;
   padding-top: 3.5rem;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.15);
 }
 
 [class*="selection-board-game"] span {
@@ -373,5 +374,6 @@ select.form-control:not([size]):not([multiple]) {
   [class*="selection-board-game"] {
     width: 50%;
     margin-bottom: 0;
+    background-size: contain;
   }
 }
