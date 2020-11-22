@@ -199,7 +199,6 @@ label {
 
 .game-area-controls {
   display: none;
-  border-top: 1px solid #e5e5e5;
   flex-flow: column;
   justify-content: space-evenly;
   text-align: center;
@@ -293,13 +292,10 @@ select.form-control:not([size]):not([multiple]) {
 .selection-board {
   width: 90%;
   height: 90%;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  overflow: scroll;
-  box-shadow: none;
-  flex-flow: row wrap;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 2rem;
+  grid-row-gap: 2rem;
 }
 
 .selection-board-game-fruits {
@@ -310,7 +306,6 @@ select.form-control:not([size]):not([multiple]) {
 
 [class*="selection-board-game"] {
   width: 100%;
-  height: 20%;
   justify-content: center;
   align-items: center;
   color: black;
@@ -319,11 +314,8 @@ select.form-control:not([size]):not([multiple]) {
   background-repeat: no-repeat;
   background-position: center;
   background-color: white;
-  text-align: center;
   position: relative;
-  padding-top: 2.5rem;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.15);
-  margin-bottom: 3rem;
 }
 
 [class*="selection-board-game"] span {

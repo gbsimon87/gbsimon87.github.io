@@ -365,7 +365,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".game-area-controls").style.display = "none";
     document.querySelector(".game-area-content-flash-card").style.display =
       "none";
-    document.querySelector(".selection-board").style.display = "flex";
+    document.querySelector(".selection-board").style.display = "grid";
 
     isPlaying = false;
   });
