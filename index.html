@@ -28,9 +28,9 @@
                 class="settings-icon"
                 xmlns="http://www.w3.org/2000/svg"
                 enable-background="new 0 0 24 24"
-                height="24"
+                height="48"
                 viewBox="0 0 24 24"
-                width="24"
+                width="48"
               >
                 <g>
                   <path d="M0,0h24v24H0V0z" fill="none" />
@@ -60,13 +60,13 @@
                 <svg
                   class="icon-grid"
                   xmlns="http://www.w3.org/2000/svg"
-                  height="24"
+                  height="48"
                   viewBox="0 0 24 24"
-                  width="24"
+                  width="48"
                 >
                   <path d="M0 0h24v24H0z" fill="none" />
                   <path
-                    d="M4 11h5V5H4v6zm0 7h5v-6H4v6zm6 0h5v-6h-5v6zm6 0h5v-6h-5v6zm-6-7h5V5h-5v6zm6-6v6h5V5h-5z"
+                    d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"
                   />
                 </svg>
               </div>
@@ -74,23 +74,49 @@
           </div>
           <div class="modal closed container text-dark">
             <span class="modal-close text-dark">X</span>
+            <span class="modal__title text-dark">Settings</span>
             <div class="settings text-dark">
-              <div class="settings-title">
-                <p>Settings</p>
+              <div class="settings-option">
+                <p>Learning Speed</p>
+                <div class="settings-speed">
+                  <label class="speed-range-label text-dark" for="speed"
+                    >Slow</label
+                  >
+                  <input
+                    type="range"
+                    class="speed-range-input"
+                    id="speed"
+                    name="speed"
+                    min="1"
+                    max="5"
+                    value="2"
+                  />
+                  <label class="speed-range-label text-dark" for="speed"
+                    >Fast</label
+                  >
+                </div>
               </div>
-              <div class="settings-speed" id="speed" name="speed">
-                <label class="speed-range-label text-dark" for="speed"
-                  >Speed</label
-                >
-                <input
-                  type="range"
-                  class="speed-range-input"
-                  id="speed"
-                  name="speed"
-                  min="1"
-                  max="5"
-                  value="2"
-                />
+              <div class="settings-option">
+                <p>Brightness</p>
+                <div class="settings-speed">
+                  <label class="speed-range-label text-dark" for="speed"
+                    >Dark</label
+                  >
+                  <input
+                    type="range"
+                    class="brightness-range-input"
+                    id="brightness"
+                    name="brightness"
+                    min="1"
+                    max="5"
+                    value="2"
+                  />
+                  <label
+                    class="brightness-range-label text-dark"
+                    for="brightness"
+                    >Light</label
+                  >
+                </div>
               </div>
             </div>
           </div>
