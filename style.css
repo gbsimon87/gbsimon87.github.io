@@ -130,7 +130,6 @@ label {
   display: flex;
   height: 100vh; /* Fallback for browsers that do not support Custom Properties */
   height: calc(var(--vh, 1vh) * 100);
-  padding: 1em 0;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -264,6 +263,7 @@ select.form-control:not([size]):not([multiple]) {
   justify-content: center;
   align-items: center;
   margin: 0;
+  margin: 2em 0;
   width: 100%;
   font-size: 1.5em;
   flex: 4;
@@ -282,7 +282,7 @@ select.form-control:not([size]):not([multiple]) {
   overflow: hidden;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   width: 100%;
-  border-radius: 0.5rem;
+  border-radius: 0.2rem;
   height: 100%;
 }
 
@@ -302,6 +302,20 @@ select.form-control:not([size]):not([multiple]) {
 
 .icon-grid {
   cursor: pointer;
+}
+
+.floating-icon-container {
+  position: fixed;
+  bottom: 2em;
+  right: 1em;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+}
+.floating-icon-container > svg {
+  fill: #28a745;
+  width: 72px;
+  height: 72px;
 }
 
 [class*="selection-board-game"] {

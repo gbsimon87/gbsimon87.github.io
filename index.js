@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const gamesDropdown = document.querySelector(".games-select");
   const selectionBoard = document.querySelector(".selection-board");
   const settingsIcon = document.querySelector(".settings-icon");
+  const plusIcon = document.querySelector(".plus-icon");
   const flashCard = document.querySelector(".game-area-content-flash-card");
   const flashCardVisual = document.querySelector(".flash-card-visual");
   const flashCardDescription = document.querySelector(
@@ -383,6 +384,8 @@ document.addEventListener("DOMContentLoaded", function () {
             ".game-area-content-flash-card"
           ).style.display = "flex";
           document.querySelector(".selection-board").style.display = "none";
+          document.querySelector(".floating-icon-container").style.display =
+            "none";
           document.querySelector(".games-select").value =
             event.target.innerText;
           currentGameSelected = event.target.innerText;
@@ -535,6 +538,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   iconGrid.addEventListener("click", function () {
     clearInterval(globalTimer);
+    document.querySelector(".floating-icon-container").style.display = "block";
     controls.style.display = "none";
     flashCard.style.display = "none";
     selectionBoard.style.display = "grid";
