@@ -21,6 +21,14 @@
         <p class="brand-role">Senior Full-Stack Engineer, A/B Experimentation</p>
       </div>
 
+      <nav class="site-nav" aria-label="Primary">
+        <ul>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
       <div class="header-actions">
         <!-- Replace with your GitHub URL -->
         <a class="icon-link" href="https://github.com/gbsimon87" target="_blank" rel="noreferrer">
@@ -47,24 +55,16 @@
           </svg>
         </a>
       </div>
-
-      <nav class="site-nav" aria-label="Primary">
-        <ul>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
     </div>
   </header>
 
   <main id="main-content">
     <section class="hero section" id="home">
       <div class="container hero-content">
-        <h1>I design & build scalable full-stack systems and work with experimentation platforms.</h1>
+        <h1>I design and build scalable full-stack systems for experimentation-driven products.</h1>
         <p class="hero-copy">
-          I partner with product, UX, and data to ship reliable services, rollouts, and optimisation that boosts
-          conversion, performance, and velocity.
+          Senior software engineer and A/B testing specialist focused on system design, delivery velocity, and
+          measurable product impact.
         </p>
         <div class="hero-actions">
           <a class="button button-primary" href="#projects">View Projects</a>
@@ -79,84 +79,15 @@
       <div class="container">
         <h2 class="visually-hidden">Quick proof points</h2>
         <ul class="proof-list">
-          <li>Led 200+ A/B testing implementations for clients</li>
-          <li>Implemented 500+ A/B tests across enterprise platforms</li>
-          <li>10+ years building production digital products</li>
-          <li>8+ years in experimentation and A/B testing</li>
+          <li><strong>10+ Years</strong><span>Building digital products</span></li>
+          <li><strong>8+ Years</strong><span>In experimentation and A/B testing</span></li>
+          <li><strong>200+</strong><span>A/B testing implementations led</span></li>
+          <li><strong>500+</strong><span>A/B tests shipped for clients</span></li>
         </ul>
       </div>
     </section>
 
-    <section class="section" id="experience" aria-labelledby="experience-heading">
-      <div class="container">
-        <h2 id="experience-heading">Experience</h2>
-        <div class="experience-list">
-          <article class="experience-item">
-            <h3>Senior Full Stack Engineer, Creative CX</h3>
-            <p class="meta">Oct 2019 - Present | London</p>
-            <ul>
-              <li>Architected and delivered 500+ A/B tests for enterprise clients including Sky, M&amp;S, Heathrow,
-                Primark, Omaze, and Hastings Direct.</li>
-              <li>Integrated Optimizely Web and Feature Experimentation across web and mobile stacks, owning
-                experimentation architecture, QA, and rollout governance.</li>
-              <li>Partnered with Product, UX, and Data teams to define success metrics, guardrails, and measurement
-                frameworks for scalable experimentation.</li>
-              <li>Increased experimentation delivery capacity by 40% and delivered up to 12% conversion lift for
-                top-tier e-commerce clients.</li>
-            </ul>
-          </article>
-          <article class="experience-item">
-            <h3>Solutions Architect, Optimizely (formerly Episerver)</h3>
-            <p class="meta">Jan 2021 - Mar 2023 | London</p>
-            <ul>
-              <li>Led 250+ customer onboardings across Optimizely Web, Edge, and Feature Experimentation.</li>
-              <li>Designed custom experimentation integration architectures aligned with business KPIs and platform
-                constraints.</li>
-              <li>Managed 10+ enterprise clients concurrently and facilitated architecture discussions with CTOs and
-                Engineering Leads.</li>
-              <li>Reduced enterprise onboarding time by 30% through reusable implementation frameworks and best-practice
-                documentation.</li>
-            </ul>
-          </article>
-          <article class="experience-item">
-            <h3>Front End Developer, Deloitte Digital</h3>
-            <p class="meta">Jun 2019 - Mar 2020 | London</p>
-            <ul>
-              <li>Delivered responsive, accessible web interfaces for enterprise clients with a strong performance and
-                UX focus.</li>
-              <li>Modernised a global courier platform using React, TypeScript, and Webpack to improve maintainability
-                and delivery speed.</li>
-              <li>Improved client performance outcomes, contributing to a 17% uplift in Lighthouse scores.</li>
-            </ul>
-          </article>
-          <article class="experience-item">
-            <h3>Front End Engineer, Byte9</h3>
-            <p class="meta">Sep 2018 - Apr 2019 | London</p>
-            <ul>
-              <li>Developed client-facing applications in a Scrum environment using React, Redux, and CI/CD workflows.
-              </li>
-              <li>Built reusable UI components that improved delivery speed and frontend consistency across projects.
-              </li>
-              <li>Supported product iterations and demos for clients including Kogan Page, with emphasis on UX
-                consistency and accessibility.</li>
-            </ul>
-          </article>
-          <article class="experience-item">
-            <h3>Solutions Engineer, RedEye</h3>
-            <p class="meta">Dec 2016 - Dec 2017 | London</p>
-            <ul>
-              <li>Designed and implemented user-focused web solutions centered on A/B testing and conversion
-                optimisation.</li>
-              <li>Translated high-fidelity designs into responsive, pixel-perfect HTML/CSS interfaces.</li>
-              <li>Partnered with UX teams to validate design hypotheses and deliver data-informed product improvements.
-              </li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="projects" aria-labelledby="projects-heading">
+    <section class="section section-alt" id="projects" aria-labelledby="projects-heading">
       <div class="container">
         <h2 id="projects-heading">Featured Projects</h2>
         <div class="project-grid">
@@ -173,14 +104,10 @@
             </picture>
             <div class="project-body">
               <h3 id="project-1-title">Experiment Dock</h3>
-              <p>
-                Built a Chrome extension that links editor workflows to live websites so engineers can
-                detect experimentation and analytics tooling without manual source inspection.
+              <p class="project-summary">
+                Chrome extension for instantly identifying experimentation and analytics tooling on live pages.
               </p>
-              <p class="impact">
-                Impact: Consolidated variant preview and metric verification into one flow; currently
-                supports 2 experimentation platforms (Optimizely Web and AB Tasty).
-              </p>
+              <p class="impact">Impact: Faster QA and variant validation across experimentation workflows.</p>
               <ul class="tags" aria-label="Technology stack">
                 <li>JavaScript</li>
                 <li>Chrome Extensions API</li>
@@ -188,15 +115,13 @@
                 <li>AB Tasty</li>
               </ul>
               <div class="project-links">
-                <!-- Replace with your project/demo URL -->
                 <a href="https://example.com/experiment-dock" target="_blank" rel="noreferrer">View Project</a>
               </div>
             </div>
           </article>
 
           <article class="project-card" id="project-2" aria-labelledby="project-2-title">
-            <!-- Replace with your project/demo URL -->
-            <a class="project-card-link" href="https://example.com/the-sporty-way" target="_blank" rel="noreferrer"
+            <a class="project-card-link" href="https://thesportyway.com" target="_blank" rel="noreferrer"
               aria-labelledby="project-2-title">
               <span class="visually-hidden">Open The Sporty Way demo</span>
             </a>
@@ -207,14 +132,10 @@
             </picture>
             <div class="project-body">
               <h3 id="project-2-title">The Sporty Way</h3>
-              <p>
-                Developed a sports management and statistics platform to help basketball leagues run
-                fixtures, player data, and operational workflows from one interface.
+              <p class="project-summary">
+                Sports management and statistics platform for basketball leagues across the UK.
               </p>
-              <p class="impact">
-                Impact: Adopted by active basketball leagues across the UK for day-to-day league and
-                stats management.
-              </p>
+              <p class="impact">Impact: Centralised fixture, player, and league operations into one product.</p>
               <ul class="tags" aria-label="Technology stack">
                 <li>React</li>
                 <li>Node.js</li>
@@ -222,16 +143,14 @@
                 <li>REST APIs</li>
               </ul>
               <div class="project-links">
-                <!-- Replace with your project/demo URL -->
                 <a href="https://thesportyway.com" target="_blank" rel="noreferrer">View Project</a>
               </div>
             </div>
           </article>
 
           <article class="project-card" id="project-3" aria-labelledby="project-3-title">
-            <!-- Replace with your project/demo URL -->
-            <a class="project-card-link" href="https://example.com/count-me-in" target="_blank" rel="noreferrer"
-              aria-labelledby="project-3-title">
+            <a class="project-card-link" href="https://confirm-attendance.onrender.com/" target="_blank"
+              rel="noreferrer" aria-labelledby="project-3-title">
               <span class="visually-hidden">Open Count Me In demo</span>
             </a>
             <picture class="project-image">
@@ -241,22 +160,17 @@
             </picture>
             <div class="project-body">
               <h3 id="project-3-title">Count Me In</h3>
-              <p>
-                Developed an event management tool for tracking RSVPs and attendee payments through
-                secure integrations and real-time dashboards.
+              <p class="project-summary">
+                Event tool for RSVP tracking and secure attendee payments through one dashboard.
               </p>
-              <p class="impact">
-                Impact: Unified RSVP tracking and payments in one workflow, reducing manual
-                coordination for event organisers.
-              </p>
+              <p class="impact">Impact: Reduced manual coordination for organisers during live events.</p>
               <ul class="tags" aria-label="Technology stack">
                 <li>MERN Stack</li>
                 <li>Stripe</li>
                 <li>REST APIs</li>
-                <li>Real-time Dashboards</li>
+                <li>Dashboards</li>
               </ul>
               <div class="project-links">
-                <!-- Replace with your project/demo URL -->
                 <a href="https://confirm-attendance.onrender.com/" target="_blank" rel="noreferrer">View Project</a>
               </div>
             </div>
@@ -274,19 +188,15 @@
             </picture>
             <div class="project-body">
               <h3 id="project-4-title">Dynamic Learning</h3>
-              <p>
-                Built a React and Three.js learning platform with fun games, skill builders, and
-                adaptive challenges designed to help users improve every day.
+              <p class="project-summary">
+                React and Three.js learning platform with games, skill builders, and daily challenges.
               </p>
-              <p class="impact">
-                Impact: Combines interactive learning flows and visual experiences to increase user
-                engagement and session depth.
-              </p>
+              <p class="impact">Impact: Increased engagement through interactive, progression-based learning loops.</p>
               <ul class="tags" aria-label="Technology stack">
                 <li>React</li>
                 <li>Three.js</li>
                 <li>JavaScript</li>
-                <li>Interactive Learning</li>
+                <li>Interactive UI</li>
               </ul>
               <div class="project-links">
                 <a href="https://dynamic-learning-n72m.onrender.com" target="_blank" rel="noreferrer">View Project</a>
@@ -306,14 +216,10 @@
             </picture>
             <div class="project-body">
               <h3 id="project-5-title">Emergensea</h3>
-              <p>
-                A global emergency assistance app that lets users alert trusted contacts and request
-                help from anywhere.
+              <p class="project-summary">
+                Global emergency app for alerting trusted contacts and requesting help from anywhere.
               </p>
-              <p class="impact">
-                Impact: Supports offline usage and automatic location detection to connect users with
-                appropriate local emergency services.
-              </p>
+              <p class="impact">Impact: Offline-ready support with automatic location routing to local services.</p>
               <ul class="tags" aria-label="Technology stack">
                 <li>React</li>
                 <li>Node.js</li>
@@ -329,74 +235,161 @@
       </div>
     </section>
 
-    <section class="section" id="skills" aria-labelledby="skills-heading">
+    <section class="section" id="experience" aria-labelledby="experience-heading">
+      <div class="container">
+        <h2 id="experience-heading">Experience</h2>
+        <div class="experience-list">
+          <article class="experience-item">
+            <h3>Senior Full Stack Engineer, Creative CX</h3>
+            <p class="meta">Oct 2019 - Present | London</p>
+            <ul class="experience-top">
+              <li>Architected and delivered 500+ A/B tests for enterprise clients across retail and travel.</li>
+              <li>Integrated Optimizely Web and Feature Experimentation across web and mobile stacks.</li>
+            </ul>
+            <details class="experience-more">
+              <summary>View more</summary>
+              <ul>
+                <li>Defined metrics, guardrails, and measurement frameworks with Product, UX, and Data teams.</li>
+                <li>Increased experimentation capacity by 40% and drove up to 12% conversion lift.</li>
+              </ul>
+            </details>
+          </article>
+
+          <article class="experience-item">
+            <h3>Solutions Architect, Optimizely (formerly Episerver)</h3>
+            <p class="meta">Jan 2021 - Mar 2023 | London</p>
+            <ul class="experience-top">
+              <li>Led 250+ customer onboardings across Web, Edge, and Feature Experimentation.</li>
+              <li>Designed integration architectures aligned with KPIs and technical constraints.</li>
+            </ul>
+            <details class="experience-more">
+              <summary>View more</summary>
+              <ul>
+                <li>Managed 10+ enterprise clients concurrently and partnered with CTOs and Engineering Leads.</li>
+                <li>Reduced onboarding time by 30% using reusable implementation frameworks.</li>
+              </ul>
+            </details>
+          </article>
+
+          <article class="experience-item">
+            <h3>Front End Developer, Deloitte Digital</h3>
+            <p class="meta">Jun 2019 - Mar 2020 | London</p>
+            <ul class="experience-top">
+              <li>Delivered accessible, responsive enterprise interfaces with strong UX and performance outcomes.</li>
+              <li>Modernised a global courier platform using React, TypeScript, and Webpack.</li>
+            </ul>
+            <details class="experience-more">
+              <summary>View more</summary>
+              <ul>
+                <li>Improved client Lighthouse performance outcomes by 17%.</li>
+              </ul>
+            </details>
+          </article>
+
+          <article class="experience-item">
+            <h3>Front End Engineer, Byte9</h3>
+            <p class="meta">Sep 2018 - Apr 2019 | London</p>
+            <ul class="experience-top">
+              <li>Built client applications in Scrum teams with React, Redux, and CI/CD workflows.</li>
+              <li>Created reusable UI components to improve speed and consistency across projects.</li>
+            </ul>
+            <details class="experience-more">
+              <summary>View more</summary>
+              <ul>
+                <li>Supported weekly product demos and iterative delivery for client teams.</li>
+              </ul>
+            </details>
+          </article>
+
+          <article class="experience-item">
+            <h3>Solutions Engineer, RedEye</h3>
+            <p class="meta">Dec 2016 - Dec 2017 | London</p>
+            <ul class="experience-top">
+              <li>Built user-focused optimisation solutions centered on A/B testing and conversion.</li>
+              <li>Translated design systems into responsive, production-ready HTML/CSS interfaces.</li>
+            </ul>
+            <details class="experience-more">
+              <summary>View more</summary>
+              <ul>
+                <li>Partnered with UX teams to test hypotheses and ship data-informed improvements.</li>
+              </ul>
+            </details>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="skills" aria-labelledby="skills-heading">
       <div class="container">
         <h2 id="skills-heading">Skills</h2>
         <div class="skills-grid">
           <section>
-            <h3>Certifications</h3>
-            <ul>
-              <li>AWS Certified Solutions Architect</li>
-              <li>Optimizely Web / Feature Experimentation </li>
-            </ul>
-          </section>
-
-          <section>
             <h3>Frontend</h3>
-            <ul>
-              <li>HTML5, CSS3, Javascript/TypeScript</li>
-              <li>React, Next.js, Redux Toolkit</li>
-              <li>Component libraries, design systems, accessibility (WCAG)</li>
-              <li>Performance optimisation (Core Web Vitals), SSR/SSG, caching</li>
-              <li>Web APIs, Chrome extension development</li>
-              <li>Experimentation UI patterns (targeting, QA, preview, rollout UX)</li>
+            <ul class="skill-chips">
+              <li>React</li>
+              <li>Next.js</li>
+              <li>TypeScript</li>
+              <li>Design systems</li>
+              <li>Core Web Vitals</li>
+              <li>Web APIs</li>
+              <li>Chrome extensions</li>
             </ul>
           </section>
 
           <section>
             <h3>Backend</h3>
-            <ul>
-              <li>Node.js, Express</li>
-              <li>REST APIs, GraphQL</li>
-              <li>Authentication &amp; authorisation (OAuth2, JWT)</li>
-              <li>Stripe integrations, webhooks</li>
-              <li>System design: domain modelling, API design, scalability</li>
-              <li>Distributed systems fundamentals (idempotency, retries, rate limiting)</li>
-              <li>Observability: logging, metrics, tracing</li>
+            <ul class="skill-chips">
+              <li>Node.js</li>
+              <li>Express</li>
+              <li>REST APIs</li>
+              <li>GraphQL</li>
+              <li>OAuth2/JWT</li>
+              <li>Stripe + webhooks</li>
+              <li>System design</li>
             </ul>
           </section>
 
           <section>
             <h3>Experimentation</h3>
-            <ul>
-              <li>A/B testing platforms (Optimizely, AB Tasty, VWO, Adobe Target, Dynamic Yield)</li>
-              <li>Feature flags, progressive delivery, canary/blue-green rollouts</li>
-              <li>Experiment design: hypotheses, targeting, sample sizing, power</li>
-              <li>Metrics: conversion, funnel analysis, guardrails, SRM detection</li>
-              <li>Stat methods: Bayesian/Frequentist, sequential testing, CUPED</li>
-              <li>QA workflows: holdouts, bucketing, allocation, flicker mitigation</li>
-              <li>Personalisation, audience segmentation, experiment governance</li>
+            <ul class="skill-chips">
+              <li>Optimizely</li>
+              <li>AB Tasty</li>
+              <li>Feature flags</li>
+              <li>Rollouts</li>
+              <li>Metrics guardrails</li>
+              <li>Experiment QA</li>
+              <li>Governance</li>
             </ul>
           </section>
 
           <section>
             <h3>Data</h3>
-            <ul>
-              <li>PostgreSQL, MongoDB</li>
-              <li>Schema design, indexing, query optimisation</li>
-              <li>Analytics instrumentation: event taxonomy, GTM/Segment, server-side tracking</li>
-              <li>Dashboards &amp; reporting, KPI definition</li>
+            <ul class="skill-chips">
+              <li>PostgreSQL</li>
+              <li>MongoDB</li>
+              <li>Event tracking</li>
+              <li>Analytics instrumentation</li>
+              <li>Funnel analysis</li>
+              <li>KPI reporting</li>
             </ul>
           </section>
 
           <section>
             <h3>DevOps</h3>
-            <ul>
-              <li>CI/CD pipelines</li>
+            <ul class="skill-chips">
+              <li>CI/CD</li>
               <li>GitHub Actions</li>
               <li>AWS architecture</li>
-              <li>Caching &amp; queues (Redis, SQS/Kafka), CDN strategy</li>
-              <li>Release governance: feature flags, rollouts, monitoring, incident response</li>
+              <li>Release governance</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Certifications</h3>
+            <ul class="skill-chips">
+              <li>AWS Certified Solutions Architect</li>
+              <li>Optimizely Web</li>
+              <li>Optimizely Feature Experimentation</li>
             </ul>
           </section>
         </div>
@@ -407,14 +400,13 @@
       <div class="container">
         <h2 id="about-heading">About</h2>
         <p class="about-copy">
-          I am a product-minded engineer focused on systems design, experimentation architecture, and
-          measurable outcomes. I do my best work on teams where engineering, product, UX, and data
-          collaborate early to ship, measure, and iterate with confidence.
+          Product-minded engineer focused on systems design, experimentation architecture, and measurable outcomes.
+          I do my best work in cross-functional teams that ship fast, learn from data, and improve continuously.
         </p>
       </div>
     </section>
 
-    <section class="section" id="contact" aria-labelledby="contact-heading">
+    <section class="section section-alt" id="contact" aria-labelledby="contact-heading">
       <div class="container contact-card">
         <h2 id="contact-heading">Contact</h2>
         <p>
